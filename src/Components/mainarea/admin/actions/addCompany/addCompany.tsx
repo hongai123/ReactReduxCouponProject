@@ -16,9 +16,9 @@ function AddCompany(): JSX.Element {
     },[])
 
     const someTry:CompanyModel = {
-        email:"orking999@gmail.com",
+        email:"or@gmail.com",
         name:"huy",
-        password:"prevent3"
+        password:"123213"
     }
     const url = "http://localhost:8080/admin/addCompany"
 

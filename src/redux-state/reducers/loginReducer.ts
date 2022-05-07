@@ -5,6 +5,7 @@ interface LoginDetails {
   token:string|null;
   error:string|null;
   isLogged:boolean|null;
+  role?:string|null;
 }
 
 
@@ -13,7 +14,8 @@ interface LoginDetails {
 const initialState = {
   token:null,
   error:null,
-  isLogged:null
+  isLogged:null,
+  role:null
 
 }
 
@@ -22,17 +24,17 @@ const reducer = (state :LoginDetails = initialState , action:Action):LoginDetail
   switch(action.type){
     
     case ActionType.LOGIN:{
-      return {token: action.payload, error:null,isLogged:true}
+      return {token: action.payload[0], error:null,isLogged:true, role: action.payload[1]}
     }
 
     case ActionType.LOGIN_ERROR:{
-      return  {token:null, error:action.payload ,isLogged:false}
+      return  {token:null, error:action.payload ,isLogged:false, role:null}
 
 
     }
 
     case ActionType.LOGOUT_USER: {
-      return { token: null , error:null,isLogged:null}
+      return { token: null , error:null,isLogged:null, role:null}
 
     }
 

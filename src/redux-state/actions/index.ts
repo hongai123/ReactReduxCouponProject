@@ -7,7 +7,7 @@ Login|ErrorLogin|Logout
 
 interface Login {
   type:ActionType.LOGIN
-  payload:string;
+  payload:string[];
 }
 
 interface ErrorLogin {

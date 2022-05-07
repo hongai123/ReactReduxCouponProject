@@ -8,8 +8,9 @@ import { useEffect } from "react";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 
 function Topbar(): JSX.Element {
-  const {token,error, isLogged} = useTypedSelector((state)=>state.loginRed);
+  const {token,error, isLogged,role} = useTypedSelector((state)=>state.loginRed);
   const log = isLogged;
+  const userRole= role;
 
   // const jwt = localStorage.getItem("token") 
 
@@ -21,10 +22,7 @@ function Topbar(): JSX.Element {
   //   }
   // })
 
-  useEffect(()=>{
-    console.log("is me " + log)
-    console.log(token)
-  },[])
+  
 
  
 
@@ -44,9 +42,15 @@ function Topbar(): JSX.Element {
               </li>
 
               <li className="topListItem">
-                  <Link className="link" id="GFG" color="white" to="/coupons">
-                  Coupons
-                  </Link>  
+              {userRole==="ADMIN"&&<Link className="link" id="GFG" color="white" to="/adminMenu">Admin-Menu</Link>}
+              {userRole==="COMPANY"&&<Link className="link" id="GFG" color="white" to="/companyMenu">Company-Menu</Link>}
+              {userRole==="CUSTOMER"&&<Link className="link" id="GFG" color="white" to="/customerMenu">Customer-Menu</Link>}
+
+                {(!userRole) && <Link className="link" id="GFG" color="white" to="/coupons"> Coupons </Link>}
+                      
+                 
+                
+                  
               </li>
 
               <li className="topListItem">

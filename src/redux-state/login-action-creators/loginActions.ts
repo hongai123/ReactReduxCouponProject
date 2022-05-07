@@ -18,11 +18,14 @@ export const logMe = (term:{username:string, password:string, role:string})=>{
       }
       )
       .then((response)=>{
+        console.log(response)
         myToken = response.headers.authorization;
+        console.log("im in response")
         dispatch({
           type:ActionType.LOGIN,
-          payload : myToken
+          payload : [myToken,term.role]
         })
+
        
         
       })
@@ -44,10 +47,13 @@ export const logMe = (term:{username:string, password:string, role:string})=>{
       
       
     } catch (error:any) {
+      console.log(error)
       dispatch({
         type : ActionType.LOGIN_ERROR,
         payload : error
       })
+      console.log("im here?")
+
     }
 
   }
@@ -59,6 +65,5 @@ return async(dispatch:Dispatch<Action>)=>{
   dispatch({
     type: ActionType.LOGOUT_USER
   })
-  localStorage.removeItem("token")
 }
 }

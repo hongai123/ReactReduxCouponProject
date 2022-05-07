@@ -4,6 +4,7 @@ import Main from "../../mainarea/main/main";
 import Notfound from "../../mainarea/notfound/notfound";
 import Coupons from "../../mainarea/coupons/coupons";
 import SignInSide from "../../mainarea/LogMeIn";
+import AdminPage from "../../mainarea/admin/adminPage/adminPage";
 
 
 function Routing(): JSX.Element {
@@ -13,6 +14,7 @@ function Routing(): JSX.Element {
             <Route path="/coupons" element={<Coupons/>}/>
             <Route path="/login" element={<SignInSide/>}/>
             <Route path="'coupons" element={<Coupons/>}/>
+            <Route path="/adminMenu" element={<AdminPage/>}/>
             <Route path="/*" element={<Notfound/>}/>
 
 

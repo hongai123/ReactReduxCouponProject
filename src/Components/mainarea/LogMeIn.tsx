@@ -36,7 +36,7 @@ function Copyright(props: any) {
 const theme = createTheme();
 
 
-export default function SignInSide() {
+export default function SignInSide() : JSX.Element {
 const [userName, setUserName] = useState<string>("");
 const [pass,setPassword] = useState<string>("");
 const [role,setRole] = useState<string>("");
@@ -50,14 +50,29 @@ const loged = isLogged;
 
 
 useEffect(()=>{
+  console.log("im here")
+  console.log(localToken);
+  console.log(error)
+  const user = {
+    username:userName,
+    password:pass,
+    role:role
+  }
+
+  if(user.password && user.role && user.username){
+  logMe(user);
+  }
+
+
+
   if(localToken){
     navigte("/");
   }
   else{
   }
-
+   
   //console.log(wrong)
-},[])
+},[userName,pass,role])
 
 
 
@@ -65,15 +80,31 @@ useEffect(()=>{
 //localStorage.getItem("wrong")
 
  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+   //logMeOut();
    //event.preventDefault();
     //const data = new FormData(event.currentTarget);
-    const user = {
-      username:userName,
-      password:pass,
-      role:role
-    }
+    // const user = {
+    //   username:userName,
+    //   password:pass,
+    //   role:role
+    // }
+    // console.log(userName)
+    // console.log(pass)
+    // console.log(role)
 
-    logMe(user);
+    
+    // logMe(user);
+
+    
+
+    // for(let counter =0; counter <100000000; counter++){
+
+    // }
+    
+    
+    
+    
+    
 
     
 
@@ -81,7 +112,20 @@ useEffect(()=>{
 
  
   const handleChangeUsername = (event:React.ChangeEvent<HTMLInputElement>)=>{
+    event.preventDefault();
     setUserName(event.target.value);
+
+  }
+
+  const handleChangePassword = (event:React.ChangeEvent<HTMLInputElement>)=>{
+    event.preventDefault();
+    setPassword(event.target.value);
+
+  }
+
+  const handleChangeRole = (event:SelectChangeEvent<string>)=>{
+    event.preventDefault();
+    setRole(event.target.value);
 
   }
 
@@ -142,7 +186,7 @@ useEffect(()=>{
                 id="password"
                 autoComplete="current-password"
                 value={pass}
-                onChange={(e)=>setPassword(e.target.value)}
+                onChange={handleChangePassword}
               />
 
              <FormControl fullWidth>
@@ -152,7 +196,7 @@ useEffect(()=>{
                  id="demo-simple-select"
                  label="Role"
                  value={role}
-                 onChange = {(e)=>setRole(e.target.value)}
+                 onChange = {handleChangeRole}
                 
                                        >
              <MenuItem value={"ADMIN"}>ADMIN</MenuItem>

@@ -19,6 +19,9 @@ import {useActions} from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypedSelector"
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
+
 //import spaceLogin from "assets/img/spaceLogin.jpg"
 function Copyright(props: any) {
   return (
@@ -40,75 +43,118 @@ export default function SignInSide() : JSX.Element {
 const [userName, setUserName] = useState<string>("");
 const [pass,setPassword] = useState<string>("");
 const [role,setRole] = useState<string>("");
-const [log,setLog] = useState(false);
+const [tryToLog,setLog] = useState(false);
 const {token,error, isLogged} = useTypedSelector((state)=>state.loginRed);
 const {logMe} = useActions();
 const {logMeOut} = useActions();
 const navigte = useNavigate();
-const localToken = token;
-const loged = isLogged;
+const [localToken,setLocalToken] = useState<string|null>("")
+let loged = null;
 
 
 useEffect(()=>{
-  console.log("im here")
-  console.log(localToken);
-  console.log(error)
-  const user = {
-    username:userName,
-    password:pass,
-    role:role
-  }
+console.log(isLogged)  
 
-  if(user.password && user.role && user.username){
-  logMe(user);
-  }
+  // const user = {
+  //   username:userName,
+  //   password:pass,
+  //   role:role
+  // }
 
 
+  // if(user.password || user.role || user.username){
+  // logMe(user);
+  // }
+  console.log("token is:")
+  console.log(token)
 
-  if(localToken){
+  if(token){
+    setLog(false)
     navigte("/");
   }
-  else{
-  }
+  
    
-  //console.log(wrong)
-},[userName,pass,role])
+},[localToken])
+
+useEffect(()=>{
+ console.log(isLogged) 
+},[tryToLog])
 
 
 
-//localStorage.getItem("token")
-//localStorage.getItem("wrong")
 
- const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
    //logMeOut();
-   //event.preventDefault();
+   event.preventDefault();
     //const data = new FormData(event.currentTarget);
     // const user = {
     //   username:userName,
     //   password:pass,
     //   role:role
     // }
-    // console.log(userName)
-    // console.log(pass)
-    // console.log(role)
+    
 
     
     // logMe(user);
+    // // }
+    // setLog(!tryToLog);
+    // setToken();
 
-    
+    const user = {
+    username:userName,
+    password:pass,
+    role:role
+  }
 
-    // for(let counter =0; counter <100000000; counter++){
+     
+      const url = `http://localhost:8080/token/log/${user.role}`
+      let myToken = "";
 
-    // }
-    
-    
-    
-    
-    
+       axios
+      .post(url,{
+        username: user.username,
+        password: user.password
+      }
 
-    
+      
+      )
+      .then((response)=>{
+        console.log(response)
+        myToken = response.headers.authorization;
+        const terms = {
+          token: myToken,
+           error: "",
+            role:user.role
+        }
+        logMe(terms)
 
-  };
+
+        setLocalToken(terms.token);
+
+        
+      })
+      .catch((error:any)=>{
+        console.log(error)
+        const terms = {
+          token:"",
+          error:"invalid username or password",
+          role:user.role
+        }
+
+        logMe(terms);
+        setLog(!tryToLog)
+        loged=false;
+
+      })
+
+}
+
+
+
+
+  const setToken = ()=>{
+    setLocalToken(token);
+  }
 
  
   const handleChangeUsername = (event:React.ChangeEvent<HTMLInputElement>)=>{
@@ -205,7 +251,7 @@ useEffect(()=>{
               </Select>
              </FormControl>
 
-             {!loged && loged !== null?<div>Invalid user name or password</div>:<div></div>}
+             {!isLogged && isLogged!==null?<div>Invalid user name or password</div>:<div></div>}
                 
               <Button
                 type="submit"

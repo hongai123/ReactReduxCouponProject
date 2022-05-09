@@ -1,14 +1,10 @@
-import "./adminPage.css";
+import "./CompanyPage.css";
 import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import AddCompany from "../actions/addCompany/addCompany";
-import UpdateCompany from "../actions/updateCompany/updateCompany";
-
-
-
+import GetCompanyCoupons from "../actions/getCompanyCoupons/getCompanyCoupons";
 
 
 interface TabPanelProps {
@@ -46,9 +42,7 @@ interface TabPanelProps {
 
 
 
-
-
-function AdminPage() :JSX.Element {
+function CompanyPage(): JSX.Element {
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -59,34 +53,24 @@ function AdminPage() :JSX.Element {
       <Box sx={{ width: '100%', position:"absolute" , top:"5%" }}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-            <Tab label="Add Company" {...a11yProps(0)} />
-            <Tab label="Update Company" {...a11yProps(1)} />
+            <Tab label="Get Company Coupons" {...a11yProps(0)} />
+            <Tab label="Item Two" {...a11yProps(1)} />
             <Tab label="Item Three" {...a11yProps(2)} />
-            <Tab label="Item four" {...a11yProps(3)} />
-
           </Tabs>
         </Box>
 
         <TabPanel value={value} index={0}>
-          <AddCompany/>
+            <GetCompanyCoupons/>
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <UpdateCompany/>
+          Item Two
         </TabPanel>
         <TabPanel value={value} index={2}>
           Item Three
         </TabPanel>
-        <TabPanel value={value} index={3}>
-          Item Three
-        </TabPanel>
         
       </Box>
-      
-    
     );
-                }
-  
+}
 
-  
-
-export default AdminPage;
+export default CompanyPage;

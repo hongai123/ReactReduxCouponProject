@@ -6,37 +6,32 @@ import { useNavigate } from "react-router-dom";
 import { useActions } from "../../../hooks/useActions";
 import { useEffect } from "react";
 import LogoutIcon from '@mui/icons-material/Logout';
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
 
 
 function Logout (){
     const nav = useNavigate();
     const useAction = useActions();
-    const some = localStorage.getItem("token")
+    const [log,setLog] = React.useState(false)
 
-// useEffect(()=>{
-//   nav("/")
-// },[some])
+useEffect(()=>{
+  nav("/")
+
+},[log])
 
 
-const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    //const data = new FormData(event.currentTarget);
-    
-    
-  
-  };
+
 
     const onClick = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
         
-          console.log("lol")
         useAction.logMeOut();
-        
+        setLog(!log)
        
     }
 
 
     return (
         <li className="topListItem">
-            <form onSubmit={handleSubmit}>
             {/* <Button
             type="submit"
             onClick={onClick}
@@ -48,7 +43,6 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 <IconButton aria-label="delete" type="submit" onClick={onClick}> 
     <LogoutIcon sx={{color:"white", position:"absolute"}}></LogoutIcon>
 </IconButton>
-</form>
 
         </li>
     );

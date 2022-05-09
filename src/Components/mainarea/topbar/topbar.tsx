@@ -7,21 +7,24 @@ import Logout from './Logout';
 import { useEffect } from "react";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 
+
 function Topbar(): JSX.Element {
-  const {token,error, isLogged,role} = useTypedSelector((state)=>state.loginRed);
-  const log = isLogged;
-  const userRole= role;
+  const globalState= useTypedSelector((state)=>state.loginRed);
+  const [log,setLog] = useState<boolean>(false);
+  const userRole = globalState.role
+  let isLogged = false;
+  
 
-  // const jwt = localStorage.getItem("token") 
+  useEffect(()=>{
+    isLogged = true;
+    console.log("yayy im hereee")
 
-  // useEffect(()=>{
-  //   if(jwt){
-  //     setUser(true);
-  //   }else{
-  //     setUser(false);
-  //   }
-  // })
+  })
 
+ 
+
+ 
+  
   
 
  
@@ -65,7 +68,8 @@ function Topbar(): JSX.Element {
           <div className="topRight">
             <ul className="topList">
 
-              {log ? <Logout /> : <Login />}
+              {globalState.isLogged ? <Logout /> : <Login />}
+
               <li>
                   <Link id="GFG" to="/cart" >
                   <ShoppingCartIcon></ShoppingCartIcon>

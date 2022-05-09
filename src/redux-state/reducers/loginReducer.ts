@@ -1,5 +1,6 @@
 import {Action} from "../actions"
 import { ActionType } from "../action-types"
+import { useEffect } from 'react';
 
 interface LoginDetails {
   token:string|null;
@@ -14,27 +15,36 @@ interface LoginDetails {
 const initialState = {
   token:null,
   error:null,
-  isLogged:null,
+  isLogged:false,
   role:null
 
 }
 
 const reducer = (state :LoginDetails = initialState , action:Action):LoginDetails=>{
+  console.log("setUP")
+  console.log(state)
 
   switch(action.type){
     
     case ActionType.LOGIN:{
-      return {token: action.payload[0], error:null,isLogged:true, role: action.payload[1]}
+      
+      console.log("im in login")
+       return { ...state,token: action.payload[0], error:null,isLogged:true, role: action.payload[1]}
+    
     }
 
     case ActionType.LOGIN_ERROR:{
-      return  {token:null, error:action.payload ,isLogged:false, role:null}
+      console.log("im in error")
+
+      return  {...state, token:null, error:action.payload ,isLogged:false, role:null}
 
 
     }
 
     case ActionType.LOGOUT_USER: {
-      return { token: null , error:null,isLogged:null, role:null}
+      console.log("im in logout")
+
+      return { ...state,token: null , error:null,isLogged:null, role:null}
 
     }
 

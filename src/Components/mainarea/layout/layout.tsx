@@ -9,18 +9,20 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 
 
-let persistor = persistStore(store);
 
 
 
 
 function Layout(): JSX.Element {
-    return <Provider store={store}>
-                    <PersistGate persistor={persistor}>
+ 
 
+
+    return (
+ 
 
 
         <BrowserRouter>
+            
         
         <div className="layout">
             <header>
@@ -35,9 +37,8 @@ function Layout(): JSX.Element {
 
         </div>
         </BrowserRouter>
-        </PersistGate>
-
-        </Provider>
+   
+    )
     
     
 }

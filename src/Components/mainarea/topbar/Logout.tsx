@@ -23,7 +23,6 @@ useEffect(()=>{
 
 
     const onClick = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
-        
         useAction.logMeOut();
         setLog(!log)
        

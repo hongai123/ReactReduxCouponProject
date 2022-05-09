@@ -4,20 +4,51 @@ import { useState } from "react";
 import axios from "axios";
 import { CouponModel } from "../../model/couponModel/couponModel";
 import CouponBox from "../../style-box/couponBox/couponBox";
+import { styled } from '@mui/material/styles';
+import Button, { ButtonProps } from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import { grey } from '@mui/material/colors';
+
+
 function Coupons(): JSX.Element {
     const url = "http://localhost:8080/guest/allAvailableCoupons"
     const [couponss,setCoupons] = useState<CouponModel[]>([])
+    const [refresh,setRefresh] = useState(true);
     
     useEffect(()=>{
         axios.get(url).then((response)=>{
             setCoupons(response.data);
     
         }).catch(error=>console.log(error))
-    },[couponss])
+    },[refresh])
+
+    const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
+        
+        color: theme.palette.getContrastText(grey[800]),
+        backgroundColor: grey[800],
+        '&:hover': {
+          backgroundColor: grey[600],
+          
+        },
+      }));
+      let hide = false;
+
+
 
     return (
         <div className="coupons">
-			<CouponBox coupons={couponss}/>
+            <div id="buttonToRemove" className="buttomDesign"  >
+            <ColorButton  onClick={()=>{
+                document.getElementById("couponsShow")?.removeAttribute("hidden");
+                setRefresh(!refresh);
+
+            }}>Show Coupons</ColorButton>
+            </div>
+            <div id="couponsShow" hidden={refresh}>
+
+            <CouponBox coupons={couponss}/>
+
+            </div>
         </div>
     );
 }

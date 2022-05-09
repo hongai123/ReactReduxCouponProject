@@ -7,6 +7,10 @@ import Box from '@mui/material/Box';
 import AddCompany from "../actions/addCompany/addCompany";
 import UpdateCompany from "../actions/updateCompany/updateCompany";
 import AddCustomer from "../actions/addCustomer/addCustomer";
+import GetCompanies from "../actions/getCompanies/getCompanies";
+import { useTypedSelector } from "../../../../hooks/useTypedSelector";
+import {useEffect} from "react"
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -51,6 +55,16 @@ interface TabPanelProps {
 
 function AdminPage() :JSX.Element {
     const [value, setValue] = React.useState(0);
+    const {token, isLogged, role} = useTypedSelector(state=>state.loginRed)
+    const nav = useNavigate();
+
+    useEffect(()=>{
+        if(role !== "ADMIN"){
+            nav("/")
+        }
+
+
+    },[role,isLogged,token])
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
       setValue(newValue);
@@ -63,7 +77,7 @@ function AdminPage() :JSX.Element {
             <Tab label="Add Company" {...a11yProps(0)} />
             <Tab label="Update Company" {...a11yProps(1)} />
             <Tab label="ADD CUSTOMER" {...a11yProps(2)} />
-            <Tab label="Item four" {...a11yProps(3)} />
+            <Tab label="Companies" {...a11yProps(3)} />
 
           </Tabs>
         </Box>
@@ -78,7 +92,7 @@ function AdminPage() :JSX.Element {
           <AddCustomer/>
         </TabPanel>
         <TabPanel value={value} index={3}>
-          Item Three
+          <GetCompanies/>
         </TabPanel>
         
       </Box>

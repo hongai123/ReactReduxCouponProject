@@ -3,9 +3,12 @@ import { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { useTypedSelector } from "../../../../../hooks/useTypedSelector";
 import { customerModel } from "../../../../model/customerModel/customerModel";
+import { useEffect } from "react";
+import SuccsessMessage from "../../../../popupMessages/succsessMessage/succsessMessage";
+import ErrorMessage from "../../../../popupMessages/errorMessage/errorMessage";
 
 function AddCustomer(): JSX.Element {
     
@@ -15,6 +18,19 @@ function AddCustomer(): JSX.Element {
     const [password, setPassword] = useState<string>("")
     const [name, setName] = useState<string>("")
     const [laName,setLaName] = useState<string>("");
+    const [isSuccesses, setIsSuccesses] = useState(false)
+    const [sucMessage, setSucMessage] = useState("");
+    const [isLoad,setLoad] = useState<boolean>(false);
+    const [isError,setError] = useState(false);
+    const [myError,setMyError] = useState("")
+
+    useEffect(()=>{
+
+    },[isSuccesses])
+
+    useEffect(()=>{
+
+},[isLoad])
 
     const url = "http://localhost:8080/admin/addCustomer"
 
@@ -33,10 +49,16 @@ function AddCustomer(): JSX.Element {
             }
         }).then((resp) => {
             if(resp.status == 202)
-                alert("Customer Added")
-        }).catch((err) => {
-            alert(err)
-        })
+            setIsSuccesses(true)
+            setSucMessage("Customer Added!")
+                }).catch((error:AxiosError) => {
+            const err = error.response?.request.responseText
+            const errMessage = JSON.stringify(err);
+            console.log(errMessage)
+            setMyError(errMessage.slice(22,66)
+            )
+            
+            setError(true);        })
     }
 
     return (
@@ -89,6 +111,9 @@ function AddCustomer(): JSX.Element {
                 submit
             </Button>
         </Box>
+
+        <SuccsessMessage isSuccesses={isSuccesses} sucMessage={sucMessage} onClickHandle={()=>setIsSuccesses(false)}/>
+        <ErrorMessage isError={isError} myError={myError} onClickHandle={()=>setError(false)}/>
        </div>
     );
 }

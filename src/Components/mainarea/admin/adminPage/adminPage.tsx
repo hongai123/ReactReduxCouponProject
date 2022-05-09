@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import AddCompany from "../actions/addCompany/addCompany";
 import UpdateCompany from "../actions/updateCompany/updateCompany";
+import AddCustomer from "../actions/addCustomer/addCustomer";
 
 
 
@@ -61,7 +62,7 @@ function AdminPage() :JSX.Element {
           <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
             <Tab label="Add Company" {...a11yProps(0)} />
             <Tab label="Update Company" {...a11yProps(1)} />
-            <Tab label="Item Three" {...a11yProps(2)} />
+            <Tab label="ADD CUSTOMER" {...a11yProps(2)} />
             <Tab label="Item four" {...a11yProps(3)} />
 
           </Tabs>
@@ -74,7 +75,7 @@ function AdminPage() :JSX.Element {
           <UpdateCompany/>
         </TabPanel>
         <TabPanel value={value} index={2}>
-          Item Three
+          <AddCustomer/>
         </TabPanel>
         <TabPanel value={value} index={3}>
           Item Three

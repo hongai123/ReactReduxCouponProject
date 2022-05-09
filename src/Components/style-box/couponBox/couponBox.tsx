@@ -24,7 +24,7 @@ function CouponBox(props:CouponProps): JSX.Element {
         {/* End hero unit */}
         <Grid container spacing={4} sx={{color:"black"}}>
           {props.coupons.map((coupon) => (
-            <Grid item key={coupon.coupon_id} xs={10} sm={6} md={4} color="black" >
+            <Grid item key={coupon.coupon_id} xs={10} sm={6} md={4} >
               <Card
                 sx={{ height: '100%', display:"flow", flexDirection: 'column' }}
               > 
@@ -34,7 +34,7 @@ function CouponBox(props:CouponProps): JSX.Element {
                     // 16:9
                     pt: '2.25%',
                   }}
-                  image="https://source.unsplash.com/random"
+                  image={coupon.image}
                   alt="random"
                 />
                 <CardContent sx={{ flexGrow: 1 }}>
@@ -51,7 +51,10 @@ function CouponBox(props:CouponProps): JSX.Element {
                 </CardActions>
               </Card>
             </Grid>
-          ))}
+          ))
+          }
+
+
         </Grid>
       </Container>
           );

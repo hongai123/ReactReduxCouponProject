@@ -24,6 +24,8 @@ function AddCompany(): JSX.Element {
     const [myError,setMyError] = useState("")
 
     useEffect(()=>{
+        console.log("im here")
+        console.log(isSuccesses)
 
     },[isSuccesses])
 

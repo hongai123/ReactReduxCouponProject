@@ -8,6 +8,7 @@ import { styled } from '@mui/material/styles';
 import Button, { ButtonProps } from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { grey } from '@mui/material/colors';
+import { Collapse } from "@mui/material";
 
 
 function Coupons(): JSX.Element {
@@ -39,16 +40,17 @@ function Coupons(): JSX.Element {
         <div className="coupons">
             <div id="buttonToRemove" className="buttomDesign"  >
             <ColorButton  onClick={()=>{
-                document.getElementById("couponsShow")?.removeAttribute("hidden");
                 setRefresh(!refresh);
 
             }}>Show Coupons</ColorButton>
             </div>
-            <div id="couponsShow" hidden={refresh}>
+            <Collapse in={refresh} timeout={900}>
+            <div id="couponsShow" >
 
             <CouponBox coupons={couponss}/>
 
             </div>
+            </Collapse>
         </div>
     );
 }

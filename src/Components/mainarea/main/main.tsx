@@ -23,7 +23,7 @@ function Main(): JSX.Element {
           alt=""
         /> */}
         <div className="aboutCoupons">
-        <Card sx={{ maxWidth: 7000 }}>
+        <Card sx={{ maxWidth: "47%" , position:"relative" }}>
         <CardMedia
           component="img"
           height="140"
@@ -49,8 +49,9 @@ function Main(): JSX.Element {
 <div className="huy">
 <Box
       sx={{
-        width: 850,
-        height: 500,
+        position:"absolute",
+        width: "47%" ,
+        height: "47%",
         backgroundColor:"#1d1d1f" 
        
       }}
@@ -64,8 +65,8 @@ function Main(): JSX.Element {
 <div className="itzik">
 <Box
       sx={{
-        width: 850,
-        height: 500,
+        width: "47%",
+        height: "47%",
         backgroundColor:"white" 
        
       }}
@@ -78,8 +79,8 @@ function Main(): JSX.Element {
 <div className="tomer">
 <Box
       sx={{
-        width: 850,
-        height: 500,
+        width: "47%",
+        height: "47%",
         backgroundColor:"white" 
        
       }}
@@ -94,8 +95,8 @@ function Main(): JSX.Element {
 <div className="emanuel">
 <Box
       sx={{
-        width: 850,
-        height: 500,
+        width: "47%",
+        height: "47%",
         backgroundColor:"#1d1d1f" 
        
       }}

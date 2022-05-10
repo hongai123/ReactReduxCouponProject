@@ -44,7 +44,7 @@ function UpdateCompany(): JSX.Element {
 
             if(resp.status == 200)
             setIsSuccesses(true)
-            setSucMessage("Customer Added!")
+            setSucMessage("Company Updated!")
                 }).catch((error:AxiosError) => {
                     const err = error.response?.request.responseText
                     const errMessage = JSON.stringify(err);

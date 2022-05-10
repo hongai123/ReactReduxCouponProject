@@ -11,6 +11,7 @@ import GetCompanies from "../actions/getCompanies/getCompanies";
 import { useTypedSelector } from "../../../../hooks/useTypedSelector";
 import {useEffect} from "react"
 import { useNavigate } from "react-router-dom";
+import DeleteCompany from "../actions/deleteCompany/deleteCompany";
 
 
 
@@ -74,7 +75,7 @@ function AdminPage() :JSX.Element {
       <Box sx={{ width: '100%', position:"absolute" , top:"5%" }}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-            <Tab label="Add Company" {...a11yProps(0)} />
+            <Tab label="Add/Delete Company" {...a11yProps(0)} />
             <Tab label="Update Company" {...a11yProps(1)} />
             <Tab label="ADD CUSTOMER" {...a11yProps(2)} />
             <Tab label="Companies" {...a11yProps(3)} />
@@ -84,6 +85,8 @@ function AdminPage() :JSX.Element {
 
         <TabPanel value={value} index={0}>
           <AddCompany/>
+          <br/>
+          <DeleteCompany/>
         </TabPanel>
         <TabPanel value={value} index={1}>
           <UpdateCompany/>

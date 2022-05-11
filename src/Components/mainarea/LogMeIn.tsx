@@ -21,6 +21,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios, { AxiosError } from 'axios';
 import {CouponModel} from "../model/couponModel/couponModel"
+import { FormHelperText } from '@mui/material';
 
 
 
@@ -225,10 +226,16 @@ useEffect(()=>{
                 name="email"
                 autoComplete="email"
                 autoFocus
+                placeholder='email@email.com'
                 value={userName}
                 onChange={handleChangeUsername}
-                error={ (userName==="" && !userName.includes("@"))}
+                error={ ((userName ==="") || !(userName.includes("@")))}
+                helperText={userName === "" ? "Field is empty":"" || !userName.includes("@")?"@ is missing":"" }
+                
               />
+
+
+
               <TextField
                 margin="normal"
                 required

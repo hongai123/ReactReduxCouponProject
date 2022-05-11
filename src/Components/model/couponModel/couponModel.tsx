@@ -1,5 +1,5 @@
 export class CouponModel{
-    amount:number= 0
+amount:number= 0
 category_id_bynum:number= 0
 companyId:number= 0
 coupon_id:number= 10

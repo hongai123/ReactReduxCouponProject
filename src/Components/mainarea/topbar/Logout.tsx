@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Button,IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useActions } from "../../../hooks/useActions";
+import { useActionOnCustomer, useActions } from "../../../hooks/useActions";
 import { useEffect } from "react";
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
@@ -13,6 +13,7 @@ function Logout (){
     const nav = useNavigate();
     const useAction = useActions();
     const [log,setLog] = React.useState(false)
+    const {CustomerDeleteCoupons} = useActionOnCustomer();
 
 useEffect(()=>{
   nav("/")
@@ -23,6 +24,7 @@ useEffect(()=>{
 
 
     const onClick = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+        CustomerDeleteCoupons()
         useAction.logMeOut();
         setLog(!log)
        

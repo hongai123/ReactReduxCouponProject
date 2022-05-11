@@ -20,6 +20,7 @@ function CustomerCoupons(): JSX.Element {
     const [isError,setError] = useState(false);
     const [myError,setMyError] = useState("")
     const [collapse,setCollapse] = useState(false);
+    const {coupons} = useTypedSelector(state=>state.couponsReducer);
 
 
 
@@ -77,6 +78,12 @@ function CustomerCoupons(): JSX.Element {
             <div>
 			<CouponBox coupons={couponss} />
             </div>
+
+            <div>
+            <CouponBox coupons={coupons} />
+            </div>
+
+            
 </Collapse>
 
 <ErrorMessage isError={isError} myError={myError} onClickHandle={()=>setError(false)}/>

@@ -61,6 +61,12 @@ function Topbar(): JSX.Element {
                   Contact
                 </Link>
               </li>
+
+              {userRole === "CUSTOMER"&&<li className="topListItem">
+                <Link id="GFG" to="/shop">
+                  Shop
+                </Link>
+              </li>}
               
             </ul>
           </div>

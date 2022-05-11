@@ -15,11 +15,13 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import {useActions} from "../../hooks/useActions";
+import {useActionOnCustomer, useActions} from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypedSelector"
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
+import {CouponModel} from "../model/couponModel/couponModel"
+
 
 
 //import spaceLogin from "assets/img/spaceLogin.jpg"
@@ -50,31 +52,36 @@ const {logMeOut} = useActions();
 const navigte = useNavigate();
 const [localToken,setLocalToken] = useState<string|null>("")
 let loged = null;
+const {CustomerUploadCoupon} = useActionOnCustomer();
+const {coupons} = useTypedSelector(state=>state.couponsReducer);
+const [customerCoupons, setCoupons] = useState<CouponModel[]>([]);
 
 
 useEffect(()=>{
-console.log(isLogged)  
-
-  // const user = {
-  //   username:userName,
-  //   password:pass,
-  //   role:role
-  // }
-
-
-  // if(user.password || user.role || user.username){
-  // logMe(user);
-  // }
+  console.log(isLogged)  
   console.log("token is:")
   console.log(token)
 
   if(token){
-    setLog(false)
-    navigte("/");
-  }
+  navigte("/")
+  } 
   
-   
 },[localToken])
+
+useEffect(()=>{
+console.log("im in customer useEffect")
+console.log(coupons)
+const term = {
+  coupons: customerCoupons
+
+}
+CustomerUploadCoupon(term);
+if(token){
+navigte("/")
+}
+},[customerCoupons])
+
+
 
 useEffect(()=>{
  console.log(isLogged) 
@@ -84,32 +91,16 @@ useEffect(()=>{
 
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-   //logMeOut();
    event.preventDefault();
-    //const data = new FormData(event.currentTarget);
-    // const user = {
-    //   username:userName,
-    //   password:pass,
-    //   role:role
-    // }
-    
-
-    
-    // logMe(user);
-    // // }
-    // setLog(!tryToLog);
-    // setToken();
-
     const user = {
     username:userName,
     password:pass,
     role:role
-  }
-
-     
+  } 
       const url = `http://localhost:8080/token/log/${user.role}`
       let myToken = "";
 
+      
        axios
       .post(url,{
         username: user.username,
@@ -126,11 +117,26 @@ useEffect(()=>{
            error: "",
             role:user.role
         }
-        logMe(terms)
 
+        //speical case
 
-        setLocalToken(terms.token);
+        if(terms.role ==="CUSTOMER"){
 
+        const url2 = "http://localhost:8080/customer/AllCustomerCoupon";
+        axios.get(url2,{headers:{
+          Authorization: terms.token
+      
+        }}).then((response)=>{
+          logMe(terms)
+          setCoupons(response.data);
+          setLocalToken(terms.token);
+        }).catch((error:AxiosError)=>{
+          console.log(error);
+        })}
+        else{
+          logMe(terms)
+          setLocalToken(terms.token);
+        }
         
       })
       .catch((error:any)=>{
@@ -221,6 +227,7 @@ useEffect(()=>{
                 autoFocus
                 value={userName}
                 onChange={handleChangeUsername}
+                error={ (userName==="" && !userName.includes("@"))}
               />
               <TextField
                 margin="normal"

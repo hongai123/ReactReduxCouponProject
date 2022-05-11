@@ -13,12 +13,13 @@ function Routing(): JSX.Element {
     return (
         <Routes>
             <Route path="/" element={<Main/>} />
-            <Route path="/coupons" element={<Coupons/>}/>
+            <Route path="/coupons"  element={<Coupons/>}/>
             <Route path="/login" element={<SignInSide/>}/>
             <Route path="'coupons" element={<Coupons/>}/>
             <Route path="/adminMenu" element={<AdminPage/>}/>
             <Route path="companyMenu" element={<CompanyPage/>}/>
             <Route path="/customerMenu" element={<CustomerPage/>}/>
+            <Route path="/shop" element={<Coupons/>}/>
             <Route path="/*" element={<Notfound/>}/>
 
 

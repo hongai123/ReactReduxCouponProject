@@ -9,18 +9,22 @@ import Button, { ButtonProps } from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { grey } from '@mui/material/colors';
 import { Collapse } from "@mui/material";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
 
+interface couponsToCompareProps{
+    couponsCompare?:CouponModel[];
+}
 
-function Coupons(): JSX.Element {
+function Coupons(props:couponsToCompareProps): JSX.Element {
     const url = "http://localhost:8080/guest/allAvailableCoupons"
     const [couponss,setCoupons] = useState<CouponModel[]>([])
     const [refresh,setRefresh] = useState(true);
-    
+    const {coupons} = useTypedSelector(state=>state.couponsReducer);
+
     useEffect(()=>{
         axios.get(url).then((response)=>{
             setCoupons(response.data);
-            console.log(response.data)
-    
+            console.log(coupons)
         }).catch(error=>console.log(error))
     },[refresh])
 
@@ -48,7 +52,7 @@ function Coupons(): JSX.Element {
             <Collapse in={refresh} timeout={900}>
             <div id="couponsShow" >
 
-            <CouponBox coupons={couponss}/>
+            <CouponBox coupons={couponss} compare={coupons}/>
 
             </div>
             </Collapse>

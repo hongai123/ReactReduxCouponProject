@@ -1,4 +1,4 @@
-import "./getCompanyCoupons.css";
+import "./customerCoupons.css";
 import { useState } from "react";
 import { CouponModel } from "../../../../model/couponModel/couponModel";
 import axios, { AxiosError } from "axios";
@@ -13,10 +13,8 @@ import ErrorMessage from "../../../../popupMessages/errorMessage/errorMessage";
 import { Collapse } from "@mui/material";
 import { TextField } from "@mui/material";
 
-
-
-function GetCompanyCoupons(): JSX.Element {
-    const url = "http://localhost:8080/company/allCompanyCoupon"
+function CustomerCoupons(): JSX.Element {
+    const url = "http://localhost:8080/customer/AllCustomerCoupon"
     const [couponss,setCoupons] = useState<CouponModel[]>([])
     const {token} = useTypedSelector((state)=>state.loginRed);
     const [isError,setError] = useState(false);
@@ -77,7 +75,7 @@ function GetCompanyCoupons(): JSX.Element {
 
 <Collapse in={collapse} timeout={900}>
             <div>
-			<CouponBox coupons={couponss}/>
+			<CouponBox coupons={couponss} />
             </div>
 </Collapse>
 
@@ -88,4 +86,4 @@ function GetCompanyCoupons(): JSX.Element {
     );
 }
 
-export default GetCompanyCoupons;
+export default CustomerCoupons;

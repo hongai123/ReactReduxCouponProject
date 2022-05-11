@@ -9,18 +9,35 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme } from '@mui/material/styles';
-
-
+import Modal from '@mui/material/Modal';
+import { useState } from "react";
 import { CouponModel } from "../../model/couponModel/couponModel";
+import Box from '@mui/material/Box';
+import BasicModalCoupon from "../basicModalCoupon/basicModalCoupon";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
+import {useNavigate} from "react-router-dom"
+import { customerModel } from "../../model/customerModel/customerModel";
+
+
+
+
+
 
 interface CouponProps{
     coupons:CouponModel[]
+    compare?:CouponModel[]
 }
 
 function CouponBox(props:CouponProps): JSX.Element {
+    const {role} = useTypedSelector(state=>state.loginRed)
     const theme = createTheme();
+    const nav = useNavigate();
+
+
+
+
     return (
-        <Container sx={{ py: 8 }} maxWidth="md">
+        <Container sx={{ py: 12 }} maxWidth="md">
         {/* End hero unit */}
         <Grid container spacing={4} sx={{color:"black"}}>
           {props.coupons.map((coupon) => (
@@ -32,12 +49,15 @@ function CouponBox(props:CouponProps): JSX.Element {
                   component="img"
                   sx={{
                     // 16:9
-                    pt: '2.25%',
+                    height:"40%",
+                    paddingTop:"0%",
+                    paddingBottom:"12%"
+                    
                   }}
                   image={coupon.image}
                   alt="random"
                 />
-                <CardContent sx={{ flexGrow: 1 }}>
+                <CardContent sx={{ flexGrow: 2 }}>
                   <Typography gutterBottom variant="h5" component="h2">
                     {coupon.title}
                   </Typography>
@@ -46,8 +66,8 @@ function CouponBox(props:CouponProps): JSX.Element {
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button size="small">Buy</Button>
-                  <Button size="small">More</Button>
+                  {role==="CUSTOMER" && props.compare?.find(c=>c.coupon_id === coupon.coupon_id)?<Button size="small">Buy</Button>:<Button size = "small" onClick={()=>nav("/")}>lol</Button>}
+                  <BasicModalCoupon coupons={coupon} buttonInfo="More"/>
                 </CardActions>
               </Card>
             </Grid>

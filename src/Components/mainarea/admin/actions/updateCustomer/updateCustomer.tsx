@@ -1,65 +1,62 @@
-import "./addCustomer.css";
+import "./updateCustomer.css";
 import { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import axios, { AxiosError } from "axios";
-import { useTypedSelector } from "../../../../../hooks/useTypedSelector";
 import { customerModel } from "../../../../model/customerModel/customerModel";
-import { useEffect } from "react";
+import { useTypedSelector } from "../../../../../hooks/useTypedSelector";
 import SuccsessMessage from "../../../../popupMessages/succsessMessage/succsessMessage";
 import ErrorMessage from "../../../../popupMessages/errorMessage/errorMessage";
 
-function AddCustomer(): JSX.Element {
+function UpdateCustomer(): JSX.Element {
     
     const {token} = useTypedSelector((state)=>state.loginRed);
 
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("")
-    const [name, setName] = useState<string>("")
-    const [laName,setLaName] = useState<string>("");
+    const [firstName, setFirstName] = useState<string>("")
+    const [lastName, setLastName] = useState<string>("")
+    const [companyId, setId] = useState<number>(0)
     const [isSuccesses, setIsSuccesses] = useState(false)
     const [sucMessage, setSucMessage] = useState("");
     const [isLoad,setLoad] = useState<boolean>(false);
     const [isError,setError] = useState(false);
     const [myError,setMyError] = useState("")
 
-    useEffect(()=>{
-
-    },[isSuccesses])
-
-    useEffect(()=>{
-
-},[isLoad])
-
-    const url = "http://localhost:8080/admin/addCustomer"
+    const url = "http://localhost:8080/admin/updateCustomer"
 
     const handleClick = () => {
         const user: customerModel = {
             email: email,
+            firstName: firstName,
+            lastName: lastName,
             password: password,
-            firstName:name,
-            lastName:laName,
-            coupons:[]
+            id:companyId,
+            coupons:[] 
         };
-        axios.post(url, user, {
+
+        axios.put(url, user, {
             headers: {
                 'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'application/json',
                 'Authorization': token ? token : "Bearer error"
             }
         }).then((resp) => {
-            if(resp.status == 202)
+
+            if(resp.status == 200)
             setIsSuccesses(true)
-            setSucMessage("Customer Added!")
+            setSucMessage("Customer Updated!")
                 }).catch((error:AxiosError) => {
-            const err = error.response?.request.responseText
-            const errMessage = JSON.stringify(err);
-            console.log(errMessage)
-            setMyError(errMessage.slice(22,66)
-            )
+                    const err = error.response?.request.responseText
+                    const errMessage = JSON.stringify(err);
+                    console.log(errMessage)
+                    setMyError(errMessage.slice(22,66)
+                    )
+                    
+                    setError(true);   
             
-            setError(true);        })
+        })
     }
 
     return (
@@ -72,6 +69,23 @@ function AddCustomer(): JSX.Element {
             noValidate
             autoComplete="off"
             >
+                <TextField
+                required
+                id="firstName"
+                label=" First Name"
+                placeholder="First Name"
+                value={firstName}
+                onChange={ (e) => { setFirstName(e.target.value) } }
+            />
+            <br/> <TextField
+                required
+                id="lastName"
+                label="Last Name"
+                placeholder="Last Name"
+                value={lastName}
+                onChange={ (e) => { setLastName(e.target.value) } }
+            />
+            <br/> 
             <TextField
                 required
                 id="email"
@@ -92,20 +106,12 @@ function AddCustomer(): JSX.Element {
             <br/> 
             <TextField
                 required
-                id="firstName"
-                label="firstName"
-                placeholder="First Name"
-                value={name}
-                onChange={ (e) => { setName(e.target.value) } }
-            />
-            <br/>
-            <TextField
-                required
-                id="lastName"
-                label="LastName"
-                placeholder="Last Name"
-                value={laName}
-                onChange={ (e) => { setLaName(e.target.value) } }
+                type="number"
+                id="id"
+                label="id"
+                placeholder="id"
+                value={companyId}
+                onChange={ (e) => { setId(Number(e.target.value)) } }
             />
             <br/>
             <Button variant="contained" onClick={handleClick} >
@@ -119,4 +125,4 @@ function AddCustomer(): JSX.Element {
     );
 }
 
-export default AddCustomer;
+export default UpdateCustomer;

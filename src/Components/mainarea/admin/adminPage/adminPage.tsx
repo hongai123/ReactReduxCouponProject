@@ -12,6 +12,11 @@ import { useTypedSelector } from "../../../../hooks/useTypedSelector";
 import {useEffect} from "react"
 import { useNavigate } from "react-router-dom";
 import DeleteCompany from "../actions/deleteCompany/deleteCompany";
+import GetOneCompany from "../actions/getOneCompany/getOneCompany";
+import GetCustomers from "../actions/getCustomers/getCustomers";
+import GetOneCustomer from "../actions/getOneCustomer/getOneCustomer";
+import UpdateCustomer from "../actions/updateCustomer/updateCustomer";
+import DeleteCustomer from "../actions/deleteCustomer/deleteCustomer";
 
 
 
@@ -77,8 +82,12 @@ function AdminPage() :JSX.Element {
           <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
             <Tab label="Add/Delete Company" {...a11yProps(0)} />
             <Tab label="Update Company" {...a11yProps(1)} />
-            <Tab label="ADD CUSTOMER" {...a11yProps(2)} />
+            <Tab label="ADD/Delete CUSTOMER" {...a11yProps(2)} />
             <Tab label="Companies" {...a11yProps(3)} />
+            <Tab label="Customers" {...a11yProps(4)} />
+            <Tab label="UpdateCustomer" {...a11yProps(5)} />
+
+
 
           </Tabs>
         </Box>
@@ -93,9 +102,21 @@ function AdminPage() :JSX.Element {
         </TabPanel>
         <TabPanel value={value} index={2}>
           <AddCustomer/>
+          <br/>
+          <DeleteCustomer/>
         </TabPanel>
         <TabPanel value={value} index={3}>
           <GetCompanies/>
+          <br/>
+          <GetOneCompany/>
+        </TabPanel>
+        <TabPanel value={value} index={4}>
+          <GetCustomers/>
+          <br/>
+          <GetOneCustomer/>
+        </TabPanel>
+        <TabPanel value={value} index={5}>
+          <UpdateCustomer/>
         </TabPanel>
         
       </Box>

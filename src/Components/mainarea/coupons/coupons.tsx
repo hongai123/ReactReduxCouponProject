@@ -19,6 +19,7 @@ function Coupons(): JSX.Element {
     useEffect(()=>{
         axios.get(url).then((response)=>{
             setCoupons(response.data);
+            console.log(response.data)
     
         }).catch(error=>console.log(error))
     },[refresh])

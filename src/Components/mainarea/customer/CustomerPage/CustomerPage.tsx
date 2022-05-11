@@ -1,18 +1,14 @@
-import "./CompanyPage.css";
+import "./CustomerPage.css";
 import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import GetCompanyCoupons from "../actions/getCompanyCoupons/getCompanyCoupons";
 import {useTypedSelector} from "../../../../hooks/useTypedSelector"
 import {useNavigate} from "react-router-dom"
 import {useEffect} from "react";
-import AddCoupon from "../actions/addCoupon/addCoupon";
-import DeleteCoupon from "../actions/deleteCoupon/deleteCoupon";
-import UpdateCoupon from "../actions/updateCompany/updateCompany";
-import CouponsByCategory from "../actions/couponsByCategory/couponsByCategory";
-import CouponsByMaxPrice from "../actions/couponsByMaxPrice/couponsByMaxPrice";
-import CompanyDetails from "../actions/companyDetails/companyDetails";
+import CustomerCoupons from "../actions/customerCoupons/customerCoupons";
+import Coupons from "../../coupons/coupons";
+
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -26,7 +22,7 @@ interface TabPanelProps {
     const nav = useNavigate();
 
     useEffect(()=>{
-        if(role !== "COMPANY"){
+        if(role !== "CUSTOMER"){
             nav("/")
         }
 
@@ -59,7 +55,8 @@ interface TabPanelProps {
 
 
 
-function CompanyPage(): JSX.Element {
+
+function CustomerPage(): JSX.Element {
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -70,37 +67,32 @@ function CompanyPage(): JSX.Element {
       <Box sx={{ width: '100%', position:"absolute" , top:"5%" }}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-            <Tab label="Get Company Coupons" {...a11yProps(0)} />
-            <Tab label="Add Coupon" {...a11yProps(1)} />
-            <Tab label="Delete Coupon" {...a11yProps(2)} />
-            <Tab label="Update Coupon" {...a11yProps(3)} />
-            <Tab label="Company Details" {...a11yProps(4)} />
+            <Tab label= "item 1" {...a11yProps(0)} />
+            <Tab label="item 2" {...a11yProps(1)} />
+            <Tab label="item 3" {...a11yProps(2)} />
+            <Tab label="item 4" {...a11yProps(3)} />
+            <Tab label="item 5" {...a11yProps(4)} />
 
           </Tabs>
         </Box>
 
         <TabPanel value={value} index={0}>
-            <GetCompanyCoupons/>
-            <br/><br/>
-            <CouponsByCategory/>
-            <br/><br/>
-            <CouponsByMaxPrice/>
-
+            <CustomerCoupons/>
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <AddCoupon/>
+            <Coupons/>
         </TabPanel>
         <TabPanel value={value} index={2}>
-          <DeleteCoupon/>
+        item3
         </TabPanel>
         <TabPanel value={value} index={3}>
-          <UpdateCoupon/>
+        item 4
         </TabPanel>
         <TabPanel value={value} index={4}>
-          <CompanyDetails/>
+        item 5
         </TabPanel>
       </Box>
     );
 }
 
-export default CompanyPage;
+export default CustomerPage;

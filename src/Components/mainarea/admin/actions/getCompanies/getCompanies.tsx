@@ -10,6 +10,7 @@ import Stack from '@mui/material/Stack';
 import { grey } from '@mui/material/colors';
 import ErrorMessage from "../../../../popupMessages/errorMessage/errorMessage";
 import { Collapse } from "@mui/material";
+import { TextField } from "@mui/material";
 
 
 
@@ -20,7 +21,11 @@ const [isLoad,setLoad] = useState<boolean>(false);
 const [isError,setError] = useState(false);
 const [myError,setMyError] = useState("")
 const [collapse,setCollapse] = useState(false);
- 
+
+
+
+
+ //get all companies
 useEffect(()=>{
 const url ="http://localhost:8080/admin/allCompanies";
 axios.get(url,{
@@ -51,7 +56,6 @@ axios.get(url,{
 },[isLoad,token])
 
 
-
 useEffect(()=>{
     console.log(isError)
 },[isError])
@@ -59,6 +63,9 @@ useEffect(()=>{
 useEffect(()=>{
 
 },[collapse])
+
+
+
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
     color: theme.palette.getContrastText(grey[800]),
@@ -71,6 +78,8 @@ const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
 
     return (
         <div id="thisButton" className="getCompanies">
+
+
             <ColorButton onClick={()=>{    
             setCollapse(!collapse)
             setLoad(!isLoad)
@@ -83,7 +92,23 @@ const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
 			<CompanyTable company={companies}/>
             </div>
         </Collapse>
+
+
+
+
+
+        <br/>
+        <br/>
+
+        
         <ErrorMessage isError={isError} myError={myError} onClickHandle={()=>setError(false)}/>
+
+
+        <br/>
+        <br/>
+
+        <br/>
+        <br/>
 
 
             

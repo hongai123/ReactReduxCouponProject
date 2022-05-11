@@ -1,4 +1,4 @@
-import "./companyTable.css";
+import "./customerTable.css";
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
@@ -13,20 +13,22 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { CompanyModel } from "../../model/companyModel/companyModel";
+import { customerModel } from "../../model/customerModel/customerModel";
 
-interface companyProps{
-    company:CompanyModel[]
+
+
+interface customerSingleProp{
+    customer : customerModel
 }
 
-interface companySingleProp{
-    singleCompamy:CompanyModel;
+interface customersProp{
+    customer :customerModel[]
 }
 
 
-function Row(props: companySingleProp) {
+function Row(props: customerSingleProp) {
     const [open, setOpen] = React.useState(false);
-    const company = props.singleCompamy;
+    const customer = props.customer;
   
     return (
       <React.Fragment>
@@ -41,10 +43,10 @@ function Row(props: companySingleProp) {
             </IconButton>
           </TableCell>
           <TableCell component="th" scope="row">
-            {company.name}
+            {customer.firstName}
           </TableCell>
-          <TableCell>{company.email}</TableCell>
-          <TableCell>{company.id}</TableCell>
+          <TableCell>{customer.lastName}</TableCell>
+          <TableCell>{customer.id}</TableCell>
         </TableRow>
         <TableRow>
           <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -65,7 +67,7 @@ function Row(props: companySingleProp) {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {company.coupons.map((coupon) => (
+                    {customer.coupons.map((coupon) => (
                       <TableRow key={coupon.coupon_id}>
                         <TableCell component="th" scope="row">
                           {coupon.title}
@@ -90,21 +92,21 @@ function Row(props: companySingleProp) {
   }
 
 
-function CompanyTable(props:companyProps): JSX.Element {
+function CustomerTable(props:customersProp): JSX.Element {
     return (
         <TableContainer component={Paper}>
           <Table aria-label="collapsible table">
             <TableHead>
               <TableRow>
                 <TableCell />
-                <TableCell>Company name</TableCell>
-                <TableCell>Email</TableCell>
                 <TableCell>ID</TableCell>
+                <TableCell>name</TableCell>
+                <TableCell>last name</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {props.company.map((companies) => (
-                <Row singleCompamy={companies} key={companies.id} />
+              {props.customer.map((customers) => (
+                <Row customer={customers} key={customers.id} />
               ))}
             </TableBody>
           </Table>
@@ -112,4 +114,5 @@ function CompanyTable(props:companyProps): JSX.Element {
       );
 }
 
-export default CompanyTable;
+
+export default CustomerTable;

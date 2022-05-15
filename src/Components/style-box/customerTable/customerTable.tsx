@@ -43,10 +43,10 @@ function Row(props: customerSingleProp) {
             </IconButton>
           </TableCell>
           <TableCell component="th" scope="row">
-            {customer.firstName}
+            {customer.id}
           </TableCell>
+          <TableCell>{customer.firstName}</TableCell>
           <TableCell>{customer.lastName}</TableCell>
-          <TableCell>{customer.id}</TableCell>
         </TableRow>
         <TableRow>
           <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>

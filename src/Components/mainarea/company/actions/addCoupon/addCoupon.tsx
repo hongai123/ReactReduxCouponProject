@@ -123,17 +123,15 @@ function AddCoupon(): JSX.Element {
             />
             <br/> <TextField
                 required
+                type="date"
                 id="startDate"
-                label="Start date"
-                placeholder="yyyy-mm-dd"
                 value={startDate}
                 onChange={ (e) => { setStartDate(e.target.value) } }
             />
              <TextField
                 required
+                type="date"
                 id="endDate"
-                label="End date"
-                placeholder="yyyy-mm-dd"
                 value={endDate}
                 onChange={ (e) => { setEndDate(e.target.value) } }
             />

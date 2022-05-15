@@ -108,9 +108,9 @@ function UpdateCoupon(): JSX.Element {
             />
             <TextField
                 required
+                type="date"
                 id="startDate"
-                label="Start date"
-                placeholder="yyyy-mm-dd"
+               
                 value={startDate}
                 onChange={ (e) => { setStartDate(e.target.value) } }
             />
@@ -124,9 +124,9 @@ function UpdateCoupon(): JSX.Element {
             />
              <TextField
                 required
+                type="date"
                 id="endDate"
-                label="End date"
-                placeholder="yyyy-mm-dd"
+                
                 value={endDate}
                 onChange={ (e) => { setEndDate(e.target.value) } }
             />

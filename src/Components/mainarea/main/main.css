@@ -117,3 +117,9 @@ hr.new4 {
   font-family: "Lora", serif;
   color: #16160e;
 }
+
+.centerMe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

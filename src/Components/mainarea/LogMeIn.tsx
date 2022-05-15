@@ -1,4 +1,5 @@
 import * as React from 'react';
+import  "./LogMe.css"
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -56,6 +57,14 @@ let loged = null;
 const {CustomerUploadCoupon} = useActionOnCustomer();
 const {coupons} = useTypedSelector(state=>state.couponsReducer);
 const [customerCoupons, setCoupons] = useState<CouponModel[]>([]);
+const [enableButt,setEnableBut] = useState(true);
+const [imFocused,setFocus] = useState(false);
+const [imFocused2,setFocus2] = useState(false);
+const [imFocused3,setFocus3] = useState(false);
+
+
+
+
 
 
 useEffect(()=>{
@@ -87,6 +96,17 @@ navigte("/")
 useEffect(()=>{
  console.log(isLogged) 
 },[tryToLog])
+
+
+useEffect(()=>{
+  console.log(2)
+  if(userName.includes("@") && pass && role){
+    setEnableBut(false);
+  }else{
+    setEnableBut(true);
+  }
+},[imFocused,imFocused2,imFocused3])
+
 
 
 
@@ -132,6 +152,8 @@ useEffect(()=>{
           setCoupons(response.data);
           setLocalToken(terms.token);
         }).catch((error:AxiosError)=>{
+          logMe(terms)
+          setLocalToken(terms.token);
           console.log(error);
         })}
         else{
@@ -155,6 +177,8 @@ useEffect(()=>{
       })
 
 }
+
+
 
 
 
@@ -229,11 +253,13 @@ useEffect(()=>{
                 placeholder='email@email.com'
                 value={userName}
                 onChange={handleChangeUsername}
-                error={ ((userName ==="") || !(userName.includes("@")))}
-                helperText={userName === "" ? "Field is empty":"" || !userName.includes("@")?"@ is missing":"" }
+                //error={ ((userName ==="") || !(userName.includes("@")))}
+                onFocus={()=>{setFocus(true)}}
+                onBlur={()=>{userName.includes("@")&&setFocus(false)}}
+                helperText={imFocused&&(userName === "" ? "Field is empty":"" || !userName.includes("@")?"@ is missing":"")  }
                 
               />
-
+            
 
 
               <TextField
@@ -247,6 +273,9 @@ useEffect(()=>{
                 autoComplete="current-password"
                 value={pass}
                 onChange={handleChangePassword}
+                onFocus={()=>{setFocus2(true)}}
+                onBlur={()=>{pass!==""&&setFocus2(false)}}
+                helperText={imFocused2&&(pass === "" && "Field is empty")}
               />
 
              <FormControl fullWidth>
@@ -257,17 +286,20 @@ useEffect(()=>{
                  label="Role"
                  value={role}
                  onChange = {handleChangeRole}
-                
+                onFocus={()=>{setFocus3(true)}}
+                onBlur={()=>{setFocus3(false)}}
                                        >
              <MenuItem value={"ADMIN"}>ADMIN</MenuItem>
              <MenuItem value={"COMPANY"}>COMPANY</MenuItem>
              <MenuItem value={"CUSTOMER"}>CUSTOMER</MenuItem>
               </Select>
+              {(imFocused3&&role==="")&&<FormHelperText>  role is missing </FormHelperText>}
              </FormControl>
 
              {!isLogged && isLogged!==null?<div>Invalid user name or password</div>:<div></div>}
                 
               <Button
+                disabled={enableButt}
                 type="submit"
                 fullWidth
                 variant="contained"

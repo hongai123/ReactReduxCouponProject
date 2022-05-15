@@ -8,6 +8,9 @@ import {useNavigate} from "react-router-dom"
 import {useEffect} from "react";
 import CustomerCoupons from "../actions/customerCoupons/customerCoupons";
 import Coupons from "../../coupons/coupons";
+import CouponsByMaxPrice from "../actions/couponsByMaxPrice/couponsByMaxPrice";
+import CouponsByCategory from "../actions/couponsByCategories/couponsByCategories";
+import CustomerDetails from "../actions/customerDetails/customerDetails";
 
 
 interface TabPanelProps {
@@ -67,11 +70,10 @@ function CustomerPage(): JSX.Element {
       <Box sx={{ width: '100%', position:"absolute" , top:"5%" }}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-            <Tab label= "item 1" {...a11yProps(0)} />
-            <Tab label="item 2" {...a11yProps(1)} />
-            <Tab label="item 3" {...a11yProps(2)} />
-            <Tab label="item 4" {...a11yProps(3)} />
-            <Tab label="item 5" {...a11yProps(4)} />
+            <Tab label= "All Coupons" {...a11yProps(0)} />
+            <Tab label="Coupons By Max Price" {...a11yProps(1)} />
+            <Tab label="Coupons By Category" {...a11yProps(2)} />
+            <Tab label="Customer Details" {...a11yProps(3)} />
 
           </Tabs>
         </Box>
@@ -80,17 +82,15 @@ function CustomerPage(): JSX.Element {
             <CustomerCoupons/>
         </TabPanel>
         <TabPanel value={value} index={1}>
-            <Coupons/>
+            <CouponsByMaxPrice/>
         </TabPanel>
         <TabPanel value={value} index={2}>
-        item3
+        <CouponsByCategory/>
         </TabPanel>
         <TabPanel value={value} index={3}>
-        item 4
+        <CustomerDetails/>
         </TabPanel>
-        <TabPanel value={value} index={4}>
-        item 5
-        </TabPanel>
+        
       </Box>
     );
 }

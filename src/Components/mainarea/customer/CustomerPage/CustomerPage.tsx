@@ -1,6 +1,6 @@
 import "./CustomerPage.css";
 import * as React from 'react';
-import Tabs from '@mui/material/Tabs';
+import Tabs , {tabsClasses} from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import {useTypedSelector} from "../../../../hooks/useTypedSelector"
@@ -11,6 +11,8 @@ import Coupons from "../../coupons/coupons";
 import CouponsByMaxPrice from "../actions/couponsByMaxPrice/couponsByMaxPrice";
 import CouponsByCategory from "../actions/couponsByCategories/couponsByCategories";
 import CustomerDetails from "../actions/customerDetails/customerDetails";
+import { Container,Grid } from "@mui/material";
+
 
 
 interface TabPanelProps {
@@ -67,9 +69,19 @@ function CustomerPage(): JSX.Element {
     };
   
     return (
-      <Box sx={{ width: '100%', position:"absolute" , top:"5%" }}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+      <Container maxWidth="lg" sx={{mt:"5vh"}}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' , maxWidth:"100%" }}>
+        <Tabs 
+        variant="scrollable"
+         scrollButtons
+         value={value}
+          onChange={handleChange} 
+          aria-label="basic tabs example"
+           sx={{
+        [`& .${tabsClasses.scrollButtons}`]: {
+          '&.Mui-disabled': { opacity: 0.3 },
+        },
+      }} >
             <Tab label= "All Coupons" {...a11yProps(0)} />
             <Tab label="Coupons By Max Price" {...a11yProps(1)} />
             <Tab label="Coupons By Category" {...a11yProps(2)} />
@@ -91,7 +103,7 @@ function CustomerPage(): JSX.Element {
         <CustomerDetails/>
         </TabPanel>
         
-      </Box>
+      </Container>
     );
 }
 

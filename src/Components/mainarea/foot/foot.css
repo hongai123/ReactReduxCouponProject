@@ -1,0 +1,12 @@
+.foot {
+}
+
+.SetBot {
+  display: flex;
+  align-items: center;
+  background-color: #eeeeee;
+  padding-top: 1.6%;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

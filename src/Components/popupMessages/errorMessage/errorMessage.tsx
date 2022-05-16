@@ -13,7 +13,7 @@ interface ErrorProps{
 
 function ErrorMessage(props:ErrorProps): JSX.Element {
     return (
-        <Box sx={{width:"50" , position:"absolute" }}>
+        <Box sx={{width:"20%" , position:"fixed" , bottom:"0" , mb:"2%" ,left:0}}>
         <Collapse in={props.isError}>
         <Alert 
         severity="error"

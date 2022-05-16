@@ -12,7 +12,7 @@ import sx from "@mui/system/sx";
 
 
 
-function CheckMain(): JSX.Element {
+function Main(): JSX.Element {
     return (
       <Fade in={true} timeout={1200} >
 
@@ -51,7 +51,7 @@ function CheckMain(): JSX.Element {
           </Card>
         </Grid>
 
-        <Grid item sm={24} xs={24} sx={{ ml:"8vw", maxHeight:"120vh", width:"120vw"}}>
+        <Grid item sm={24} xs={24} sx={{ ml:"8vw", maxHeight:"100%", width:"100%" , pb:"10%"}}>
 
         <SwipeableTextMobileStepper/>
 
@@ -67,4 +67,4 @@ function CheckMain(): JSX.Element {
     );
 }
 
-export default CheckMain;
+export default Main;

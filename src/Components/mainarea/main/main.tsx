@@ -11,7 +11,7 @@ import { fontFamily } from "@mui/system";
 
 
 
-function Main(): JSX.Element {
+function NoLongerMain(): JSX.Element {
     return (
       <Fade in={true} timeout={1200} >
       <Container>
@@ -139,4 +139,4 @@ function Main(): JSX.Element {
     );
 }
 
-export default Main;
+export default NoLongerMain;

@@ -4,3 +4,22 @@
 .inputRounded .MuiOutlinedInput-root {
   border-radius: 14px;
 }
+
+.SomeInfo {
+  display: flow-root;
+  position: fixed;
+  top: 15%;
+  left: 60%;
+}
+
+.SomeInfoText {
+  position: fixed;
+  left: 65%;
+  top: 25%;
+}
+
+@media all and (max-width: 700px) {
+  .SomeInfo {
+    display: none;
+  }
+}

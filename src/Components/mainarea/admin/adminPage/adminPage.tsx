@@ -1,6 +1,6 @@
 import "./adminPage.css";
 import * as React from 'react';
-import Tabs from '@mui/material/Tabs';
+import Tabs , {tabsClasses} from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -17,6 +17,7 @@ import GetCustomers from "../actions/getCustomers/getCustomers";
 import GetOneCustomer from "../actions/getOneCustomer/getOneCustomer";
 import UpdateCustomer from "../actions/updateCustomer/updateCustomer";
 import DeleteCustomer from "../actions/deleteCustomer/deleteCustomer";
+import { Container,Grid } from "@mui/material";
 
 
 
@@ -77,33 +78,41 @@ function AdminPage() :JSX.Element {
     };
   
     return (
-      <Box sx={{ width: '100%', position:"absolute" , top:"5%" }}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-            <Tab label="Add/Delete Company" {...a11yProps(0)} />
+      <Container maxWidth="lg" sx={{mt:"5vh"}}>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' , maxWidth:"100%" }}>
+          <Tabs 
+          variant="scrollable"
+           scrollButtons
+           value={value}
+            onChange={handleChange} 
+            aria-label="basic tabs example"
+             sx={{
+          [`& .${tabsClasses.scrollButtons}`]: {
+            '&.Mui-disabled': { opacity: 0.3 },
+          },
+        }} >
+
+            <Tab label="Add Company" {...a11yProps(0)} />
             <Tab label="Update Company" {...a11yProps(1)} />
-            <Tab label="ADD/Delete CUSTOMER" {...a11yProps(2)} />
+            <Tab label="Add Customer" {...a11yProps(2)} />
             <Tab label="Companies" {...a11yProps(3)} />
             <Tab label="Customers" {...a11yProps(4)} />
-            <Tab label="UpdateCustomer" {...a11yProps(5)} />
-
-
+            <Tab label="Update Customer" {...a11yProps(5)} />
+            <Tab label="Delete Company" {...a11yProps(6)}/>
+            <Tab label="Delete Customer" {...a11yProps(7)}/>
 
           </Tabs>
+
         </Box>
 
         <TabPanel value={value} index={0}>
           <AddCompany/>
-          <br/>
-          <DeleteCompany/>
         </TabPanel>
         <TabPanel value={value} index={1}>
           <UpdateCompany/>
         </TabPanel>
         <TabPanel value={value} index={2}>
           <AddCustomer/>
-          <br/>
-          <DeleteCustomer/>
         </TabPanel>
         <TabPanel value={value} index={3}>
           <GetCompanies/>
@@ -118,8 +127,15 @@ function AdminPage() :JSX.Element {
         <TabPanel value={value} index={5}>
           <UpdateCustomer/>
         </TabPanel>
+        <TabPanel value={value} index={6}>
+        <DeleteCompany/>
+        </TabPanel>
+        <TabPanel value={value} index={7}>
+        <DeleteCustomer/>
+        </TabPanel>
+
+        </Container>
         
-      </Box>
       
     
     );

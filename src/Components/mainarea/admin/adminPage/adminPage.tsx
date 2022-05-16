@@ -17,7 +17,7 @@ import GetCustomers from "../actions/getCustomers/getCustomers";
 import GetOneCustomer from "../actions/getOneCustomer/getOneCustomer";
 import UpdateCustomer from "../actions/updateCustomer/updateCustomer";
 import DeleteCustomer from "../actions/deleteCustomer/deleteCustomer";
-import { Container,Grid } from "@mui/material";
+import { Container,Fade,Grid } from "@mui/material";
 
 
 
@@ -78,6 +78,7 @@ function AdminPage() :JSX.Element {
     };
   
     return (
+      <Fade in timeout={1200}>
       <Container maxWidth="lg" sx={{mt:"5vh"}}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' , maxWidth:"100%" }}>
           <Tabs 
@@ -135,6 +136,7 @@ function AdminPage() :JSX.Element {
         </TabPanel>
 
         </Container>
+        </Fade>
         
       
     

@@ -24,7 +24,7 @@ function NoLongerMain(): JSX.Element {
 
           <CardMedia
           component="img"
-          style={{width:"auto", maxHeight:"280px"}}
+          style={{width:"auto", maxHeight:"250px"}}
           sx={{display:"flex" , flexDirection:"column" , alignItems:"center"   }}
           
           image={require("../../../Assets/images/ticketLogoTry.png")}

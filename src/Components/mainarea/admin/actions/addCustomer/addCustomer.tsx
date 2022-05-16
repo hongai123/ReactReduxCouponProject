@@ -9,6 +9,8 @@ import { customerModel } from "../../../../model/customerModel/customerModel";
 import { useEffect } from "react";
 import SuccsessMessage from "../../../../popupMessages/succsessMessage/succsessMessage";
 import ErrorMessage from "../../../../popupMessages/errorMessage/errorMessage";
+import { Container,Grid,Typography } from "@mui/material";
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 function AddCustomer(): JSX.Element {
     
@@ -63,7 +65,18 @@ function AddCustomer(): JSX.Element {
     }
 
     return (
-       <div>
+
+        <Container maxWidth="lg" sx={{display:"flex" , flexDirection:"column" , alignContent:"center"}}>
+
+        <Grid container spacing={2} sx={{display:"flex" , flexDirection:"column"}}>
+
+        <Grid item xs={12} sm={12}>
+        <Typography variant="h3" style={{fontFamily:"Lora"}} >Add Customer</Typography>
+        </Grid>
+
+        <Grid item xs={12} sm ={12}>
+
+        </Grid>
         <Box
             component="form"
             sx={{
@@ -74,6 +87,7 @@ function AddCustomer(): JSX.Element {
             >
             <TextField
                 required
+                className="inputRounded"
                 id="email"
                 label="Email"
                 placeholder="Email"
@@ -83,6 +97,7 @@ function AddCustomer(): JSX.Element {
             <br/> 
             <TextField
                 required
+                className="inputRounded"
                 id="password"
                 label="Password"
                 placeholder="Password"
@@ -92,6 +107,7 @@ function AddCustomer(): JSX.Element {
             <br/> 
             <TextField
                 required
+                className="inputRounded"
                 id="firstName"
                 label="firstName"
                 placeholder="First Name"
@@ -101,6 +117,7 @@ function AddCustomer(): JSX.Element {
             <br/>
             <TextField
                 required
+                className="inputRounded"
                 id="lastName"
                 label="LastName"
                 placeholder="Last Name"
@@ -108,14 +125,34 @@ function AddCustomer(): JSX.Element {
                 onChange={ (e) => { setLaName(e.target.value) } }
             />
             <br/>
-            <Button variant="contained" onClick={handleClick} >
+            <Button sx={{ml:"1vw" , mt:"5vh"}} style={{borderRadius:"15px"}} variant="contained" onClick={handleClick} >
                 submit
             </Button>
+        </Box>
+        <Box 
+         className='SomeInfo'
+         width="100%"
+         height="50%"
+         sx={{
+            borderLeft:1,
+            borderColor:"divider"
+        }}>
+        <Typography variant="body1" style={{fontFamily:"Lora"}} className='SomeInfoText' >
+            <AddCircleIcon fontSize="large"/>
+            <br/>
+             Welcome to the place where we add Customers :)
+        </Typography>
         </Box>
 
         <SuccsessMessage isSuccesses={isSuccesses} sucMessage={sucMessage} onClickHandle={()=>setIsSuccesses(false)}/>
         <ErrorMessage isError={isError} myError={myError} onClickHandle={()=>setError(false)}/>
-       </div>
+
+                
+        </Grid>
+
+
+        </Container>
+
     );
 }
 

@@ -8,6 +8,8 @@ import { customerModel } from "../../../../model/customerModel/customerModel";
 import { useTypedSelector } from "../../../../../hooks/useTypedSelector";
 import SuccsessMessage from "../../../../popupMessages/succsessMessage/succsessMessage";
 import ErrorMessage from "../../../../popupMessages/errorMessage/errorMessage";
+import { Container,Grid,Typography } from "@mui/material";
+import SystemUpdateAltIcon from '@mui/icons-material/SystemUpdateAlt';
 
 function UpdateCustomer(): JSX.Element {
     
@@ -60,7 +62,17 @@ function UpdateCustomer(): JSX.Element {
     }
 
     return (
-       <div>
+        <Container maxWidth="lg" sx={{display:"flex" , flexDirection:"column" , alignContent:"center"}}>
+
+        <Grid container spacing={2} sx={{display:"flex" , flexDirection:"column"}}>
+
+        <Grid item xs={12} sm={12}>
+        <Typography variant="h3" style={{fontFamily:"Lora"}} >Update Customer</Typography>
+        </Grid>
+
+        <Grid item xs={12} sm ={12}>
+
+        </Grid>
         <Box
             component="form"
             sx={{
@@ -71,6 +83,7 @@ function UpdateCustomer(): JSX.Element {
             >
                 <TextField
                 required
+                className="inputRounded"
                 id="firstName"
                 label=" First Name"
                 placeholder="First Name"
@@ -79,6 +92,7 @@ function UpdateCustomer(): JSX.Element {
             />
             <br/> <TextField
                 required
+                className="inputRounded"
                 id="lastName"
                 label="Last Name"
                 placeholder="Last Name"
@@ -88,6 +102,7 @@ function UpdateCustomer(): JSX.Element {
             <br/> 
             <TextField
                 required
+                className="inputRounded"
                 id="email"
                 label="Email"
                 placeholder="Email"
@@ -97,6 +112,7 @@ function UpdateCustomer(): JSX.Element {
             <br/> 
             <TextField
                 required
+                className="inputRounded"
                 id="password"
                 label="Password"
                 placeholder="Password"
@@ -106,6 +122,7 @@ function UpdateCustomer(): JSX.Element {
             <br/> 
             <TextField
                 required
+                className="inputRounded"
                 type="number"
                 id="id"
                 label="id"
@@ -114,14 +131,35 @@ function UpdateCustomer(): JSX.Element {
                 onChange={ (e) => { setId(Number(e.target.value)) } }
             />
             <br/>
-            <Button variant="contained" onClick={handleClick} >
+            <Button  sx={{ml:"1vw" , mt:"5vh"}} style={{borderRadius:"15px"}} variant="contained" onClick={handleClick} >
                 submit
             </Button>
         </Box>
 
+
+        <Box 
+         className='SomeInfo'
+         width="100%"
+         height="50%"
+         sx={{
+            borderLeft:1,
+            borderColor:"divider"
+        }}>
+        <Typography variant="body1" style={{fontFamily:"Lora"}} className='SomeInfoText' >
+            <SystemUpdateAltIcon fontSize="large"/>
+            <br/>
+             Welcome to the place where we Update Customers :)
+        </Typography>
+        </Box>
+
+
         <SuccsessMessage isSuccesses={isSuccesses} sucMessage={sucMessage} onClickHandle={()=>setIsSuccesses(false)}/>
         <ErrorMessage isError={isError} myError={myError} onClickHandle={()=>setError(false)}/>
-       </div>
+
+        </Grid>
+
+
+</Container>
     );
 }
 

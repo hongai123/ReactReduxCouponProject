@@ -5,6 +5,8 @@ import axios, { AxiosError } from "axios"
 import {useTypedSelector} from "../../../../../hooks/useTypedSelector"
 import SuccsessMessage from "../../../../popupMessages/succsessMessage/succsessMessage";
 import ErrorMessage from "../../../../popupMessages/errorMessage/errorMessage";
+import { Container,Grid,Typography } from "@mui/material";
+import ClearIcon from '@mui/icons-material/Clear';
 
 
 
@@ -57,6 +59,17 @@ const onClickHandle = ()=>{
 
 
     return (
+        <Container maxWidth="lg" sx={{display:"flex" , flexDirection:"column" , alignContent:"center"}}>
+
+        <Grid container spacing={2} sx={{display:"flex" , flexDirection:"column"}}>
+
+        <Grid item xs={12} sm={12}>
+        <Typography variant="h3" style={{fontFamily:"Lora"}} >Delete Company</Typography>
+        </Grid>
+
+        <Grid item xs={12} sm ={12}>
+
+        </Grid>
         <Box
             component="form"
             sx={{
@@ -68,6 +81,7 @@ const onClickHandle = ()=>{
                 <br/>
                 <TextField
                 required
+                className="inputRounded"
                 type="number"
                 id="companyID"
                 label="ID"
@@ -76,15 +90,38 @@ const onClickHandle = ()=>{
                 onChange={ (e) => { setCompanyId(Number(e.target.value))}}
             />
             <br/>
-            <Button variant="contained" onClick={onClickHandle} >
+            <Button  sx={{ml:"1vw" , mt:"5vh"}} style={{borderRadius:"15px"}} variant="contained" onClick={onClickHandle} >
                 submit
             </Button>
 
-            <SuccsessMessage isSuccesses={isSuccesses} sucMessage={sucMessage} onClickHandle={()=>setIsSuccesses(false)}/>
-            <ErrorMessage isError={isError} myError={myError} onClickHandle={()=>setError(false)}/>
+
+
 
 
             </Box>
+
+        <Box 
+         className='SomeInfo'
+         width="100%"
+         height="50%"
+         sx={{
+            borderLeft:1,
+            borderColor:"divider"
+        }}>
+        <Typography variant="body1" style={{fontFamily:"Lora"}} className='SomeInfoText' >
+            <ClearIcon fontSize="large"/>
+            <br/>
+             Welcome to the place where we Delete Companies :)
+        </Typography>
+        </Box>
+
+        <SuccsessMessage isSuccesses={isSuccesses} sucMessage={sucMessage} onClickHandle={()=>setIsSuccesses(false)}/>
+        <ErrorMessage isError={isError} myError={myError} onClickHandle={()=>setError(false)}/>
+                            
+        </Grid>
+
+
+</Container>
     );
 }
 

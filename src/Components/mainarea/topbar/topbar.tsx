@@ -30,13 +30,9 @@ function Topbar(): JSX.Element {
  
 
     return (
+
         <div className="top">
-          <div className="topLeft">
-            <i className="topIcon fab fa-facebook-square"></i>
-            <i className="topIcon fab fa-instagram-square"></i>
-            <i className="topIcon fab fa-pinterest-square"></i>
-            <i className="topIcon fab fa-twitter-square"></i>
-          </div>
+         
           <div className="topCenter">
             <ul className="topList">
 
@@ -74,7 +70,7 @@ function Topbar(): JSX.Element {
           <div className="topRight">
             <ul className="topList">
 
-              {globalState.isLogged ? <Logout /> : <Login />}
+             {globalState.isLogged ? <Logout /> : <Login />}
 
               <li>
                   <Link id="GFG" to="/cart" >

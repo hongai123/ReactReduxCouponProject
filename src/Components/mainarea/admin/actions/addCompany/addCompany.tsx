@@ -75,6 +75,7 @@ function AddCompany(): JSX.Element {
             >
             <TextField
                 required
+                className="inputRounded"
                 id="email"
                 label="Email"
                 placeholder="Email"
@@ -84,6 +85,7 @@ function AddCompany(): JSX.Element {
             <br/> 
             <TextField
                 required
+                className="inputRounded"
                 id="password"
                 label="Password"
                 placeholder="Password"
@@ -93,6 +95,7 @@ function AddCompany(): JSX.Element {
             <br/> 
             <TextField
                 required
+                className="inputRounded"
                 id="name"
                 label="Name"
                 placeholder="Name"

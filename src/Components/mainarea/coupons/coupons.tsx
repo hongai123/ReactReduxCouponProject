@@ -18,7 +18,7 @@ interface couponsToCompareProps{
 function Coupons(props:couponsToCompareProps): JSX.Element {
     const url = "http://localhost:8080/guest/allAvailableCoupons"
     const [couponss,setCoupons] = useState<CouponModel[]>([])
-    const [refresh,setRefresh] = useState(true);
+    const [refresh,setRefresh] = useState(false);
     const {coupons} = useTypedSelector(state=>state.couponsReducer);
 
     useEffect(()=>{

@@ -7,12 +7,13 @@ import SignInSide from "../../mainarea/LogMeIn";
 import AdminPage from "../../mainarea/admin/adminPage/adminPage";
 import CompanyPage from "../../mainarea/company/CompanyPage/CompanyPage";
 import CustomerPage from "../../mainarea/customer/CustomerPage/CustomerPage";
+import CheckMain from "../../mainarea/main/checkMain";
 
 
 function Routing(): JSX.Element {
     return (
         <Routes>
-            <Route path="/" element={<Main/>} />
+            <Route path="/" element={<CheckMain/>} />
             <Route path="/coupons"  element={<Coupons/>}/>
             <Route path="/login" element={<SignInSide/>}/>
             <Route path="'coupons" element={<Coupons/>}/>

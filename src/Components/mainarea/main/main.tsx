@@ -20,7 +20,7 @@ function Main(): JSX.Element {
 
         
         <div>
-          <Box className="centerMe"  sx={{pb:"3vh" , pt:"10vh"}}>
+          <Box className="centerMe"  sx={{pb:"3vh" , pt:"8vh"}}>
 
           <CardMedia
           component="img"
@@ -39,17 +39,17 @@ function Main(): JSX.Element {
           alt=""
         /> */}
         <Box className="centerMe"   sx={{pb:"20vh", pt:"5vh" }}>
-        <Card sx={{ position:"absolute" , borderRadius:"10%"   }}>
+        <Card sx={{ position:"absolute" , borderRadius:"10%" ,borderColor:"black" }}>
         <CardMedia
           component="img"
           height="120"
           image= {require("../../../Assets/images/AboutUsBack.jpeg")}
         />
-        <CardContent sx={{backgroundImage:require("../../../Assets/images/SpaceLogin.jpg")}}>
-          <Typography gutterBottom variant="h5" component="div">
-              <h3 className="headerTitles">About Our Company</h3>
+        <CardContent>
+          <Typography  gutterBottom variant="h5" component="div">
+              <h3  className="headerTitles">About Our Company</h3>
           </Typography>
-          <Typography variant="body2" color="text.secondary" >
+          <Typography variant="body2" color="text.second" >
             our company was created in 2022 by Huy Nguyen and his three useless teammates. <br/>
             our company helps other companies sell coupons and improve their sales among the market drastically.<br/>
             we have a unique working technique which has been proven by our satisfied customers all over the world.<br/>
@@ -123,7 +123,7 @@ function Main(): JSX.Element {
     </Box> */}
 
 
-    <Grid className="centerMe" sx={{mt:"40%"}} >
+    <Grid className="centerMe" sx={{pt:"10%"}} >
       <Box className="centerMe" sx={{pt:"10%"}}>
     <SwipeableTextMobileStepper/>
      </Box>

@@ -1,2 +1,6 @@
 .addCompany {
 }
+
+.inputRounded .MuiOutlinedInput-root {
+  border-radius: 14px;
+}

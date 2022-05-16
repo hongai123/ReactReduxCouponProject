@@ -6,12 +6,12 @@ function Login() : JSX.Element  {
     return (      
         <React.Fragment>
             <li className="topListItem">
-                <Link id="GFG" className="link" to="/login">
+                <Link id="loginGFG" className="link" to="/login">
                 Login
                 </Link>
             </li>
             <li className="topListItem">
-                <Link id="GFG" className="link" to="/register">
+                <Link id="loginGFG" className="link" to="/register">
                 Register
                 </Link>
             </li>

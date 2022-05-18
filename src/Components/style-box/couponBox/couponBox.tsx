@@ -67,7 +67,7 @@ function CouponBox(props:CouponProps): JSX.Element {
                   </Typography>
                 </CardContent>
                 <CardActions sx={{position:"relative"}}>
-                  {role==="CUSTOMER"? props.compare?.find(c=>c.coupon_id === coupon.coupon_id)?<Button size="small">purchased</Button>:<BuyCoupon couponProp={coupon}/> :<Button size="small" onClick={()=>nav("/login")}>TO BUY</Button>}
+                  {role==="CUSTOMER"? props.compare?.find(c=>c.coupon_id === coupon.coupon_id)?<Button size="small">purchased</Button>:<BuyCoupon couponProp={coupon}/> :(role==="COMPANY" || role === "ADMIN" ? "":<Button size="small" onClick={()=>nav("/login")}>TO BUY</Button>)}
                   <BasicModalCoupon coupons={coupon} buttonInfo="More"/>
                 </CardActions>
               </Card>

@@ -70,7 +70,6 @@ function UpdateCompany(): JSX.Element {
 
         <Grid item xs={12} sm ={12}>
 
-        </Grid>
         
         <Box
             component="form"
@@ -130,6 +129,7 @@ function UpdateCompany(): JSX.Element {
              Welcome to the place where we Update Companies :)
         </Typography>
         </Box>
+        </Grid>
 
 
         <SuccsessMessage isSuccesses={isSuccesses} sucMessage={sucMessage} onClickHandle={()=>setIsSuccesses(false)}/>

@@ -6,11 +6,12 @@ import { useTypedSelector } from "../../../../../hooks/useTypedSelector";
 import { Box, TextField } from "@mui/material";
 import ErrorMessage from '../../../../popupMessages/errorMessage/errorMessage';
 import CustomerCoupons from "../customerCoupons/customerCoupons";
+import CustomerTable from "../../../../style-box/customerTable/customerTable";
 
 
 
 function CustomerDetails(): JSX.Element {
-const [customer,setCustomer] = useState<customerModel>()
+const [customer,setCustomer] = useState<customerModel[]>([])
 const {token} = useTypedSelector(state=>state.loginRed);
 const [load,setLoad] = useState(false)
 const [isError,setError] = useState(false);
@@ -25,7 +26,7 @@ useEffect(()=>{
             'Authorization': token ? token : "Bearer error"
         }
     }).then((response)=>{
-        setCustomer(response.data)
+        setCustomer([...[],response.data])
         setLoad(true);
 
 
@@ -43,22 +44,8 @@ useEffect(()=>{
 
     return (
         <div className="customerDetails">
-            <Box>
-                {customer?.firstName}
-            </Box>
-            <Box>
-                {customer?.lastName}
-            </Box>
-            <Box>
-                {customer?.coupons.map((customer)=> <div>
-                  <Box>
-                      {customer?.title}
-                  </Box>
-                </div>)}
-            </Box>
-        
-            <ErrorMessage isError={isError} myError={myError} onClickHandle={()=>setError(false)}/>
 
+        <CustomerTable customer={customer} />
             
         </div>
     );

@@ -13,6 +13,7 @@ import { TextField } from "@mui/material";
 import { Box } from "@mui/material";
 import { customerModel } from "../../../../model/customerModel/customerModel";
 import CustomerTable from "../../../../style-box/customerTable/customerTable";
+import { Container, Typography, Grid } from '@mui/material';
 
 
 
@@ -78,10 +79,24 @@ const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
 
 
     return (
-        <div>
+        <Container maxWidth="lg" sx={{display:"flex" , flexDirection:"column" , alignContent:"center"}}>
+
+        <Grid container spacing={2} sx={{display:"flex" , flexDirection:"column"}}>
+            <Box sx={{borderTop:1 ,borderColor:"divider"}}/>
+
+        <Grid item xs={12} sm={12} sx={{mb:"3%"}}>
+        <Typography variant="h3" style={{fontFamily:"Lora"}} >Find Single Customer</Typography>
+        </Grid>
+
+        <Grid item xs={12} sm={12} sx={{mb:"0"}}>
+        <Typography variant="body1" style={{fontFamily:"Lora"}} >Please enter customer ID</Typography>
+        </Grid>
+
+        <Grid item xs={12} sm={12} sx={{mb:"3%"}}>
         <Box>
         <TextField
                 required
+                className="inputRounded"
                 type="number"
                 id="id"
                 label="id"
@@ -107,11 +122,17 @@ const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
         </Collapse>
         </div>
 
-        <ErrorMessage isError={isError} myError={myError} onClickHandle={()=>setError(false)}/>
 
         </Box>
+        </Grid>
+        <ErrorMessage isError={isError} myError={myError} onClickHandle={()=>setError(false)}/>
 
-        </div>
+        </Grid>
+
+
+</Container>
+
+
     );
 }
 

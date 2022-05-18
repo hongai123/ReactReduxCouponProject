@@ -117,10 +117,10 @@ function AdminPage() :JSX.Element {
         </TabPanel>
         <TabPanel value={value} index={3}>
           <GetCompanies/>
+          <GetOneCompany/>
         </TabPanel>
         <TabPanel value={value} index={4}>
           <GetCustomers/>
-          <br/>
           <GetOneCustomer/>
         </TabPanel>
         <TabPanel value={value} index={5}>

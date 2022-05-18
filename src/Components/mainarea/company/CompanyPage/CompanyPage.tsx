@@ -16,6 +16,7 @@ import CompanyDetails from "../actions/companyDetails/companyDetails";
 import { Container,Grid } from "@mui/material";
 
 
+
 interface TabPanelProps {
     children?: React.ReactNode;
     index: number;
@@ -87,17 +88,14 @@ function CompanyPage(): JSX.Element {
             <Tab label="Delete Coupon" {...a11yProps(2)} />
             <Tab label="Update Coupon" {...a11yProps(3)} />
             <Tab label="Company Details" {...a11yProps(4)} />
+            <Tab label="Coupons By Cateogry" {...a11yProps(5)} />
+            <Tab label="Coupons By MaxPrice" {...a11yProps(6)} />
 
           </Tabs>
         </Box>
 
         <TabPanel value={value} index={0}>
             <GetCompanyCoupons/>
-            <br/><br/>
-            <CouponsByCategory/>
-            <br/><br/>
-            <CouponsByMaxPrice/>
-
         </TabPanel>
         <TabPanel value={value} index={1}>
           <AddCoupon/>
@@ -111,6 +109,14 @@ function CompanyPage(): JSX.Element {
         <TabPanel value={value} index={4}>
           <CompanyDetails/>
         </TabPanel>
+        <TabPanel value={value} index={5}>
+          <CouponsByCategory/>
+        </TabPanel>
+        <TabPanel value={value} index={6}>
+          <CouponsByMaxPrice/>
+        </TabPanel>
+        
+
         </Container>
     );
 }

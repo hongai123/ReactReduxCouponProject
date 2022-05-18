@@ -7,10 +7,11 @@ import Button, { ButtonProps } from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { grey } from '@mui/material/colors';
 import ErrorMessage from "../../../../popupMessages/errorMessage/errorMessage";
-import { Collapse } from "@mui/material";
+import { Collapse, Fade } from "@mui/material";
 import { TextField } from "@mui/material";
 import CustomerTable from "../../../../style-box/customerTable/customerTable";
 import { customerModel } from "../../../../model/customerModel/customerModel";
+import { Container, Typography, Grid } from '@mui/material';
 
 function GetCustomers(): JSX.Element {
     const {token,error} = useTypedSelector(state=>state.loginRed);
@@ -70,6 +71,15 @@ useEffect(()=>{
 
 
     return (
+        <Container maxWidth="lg" sx={{display:"flex" , flexDirection:"column" , alignContent:"center"}}>
+
+        <Grid container spacing={2} sx={{display:"flex" , flexDirection:"column" , mb:"10%"}}>
+
+        <Grid item xs={12} sm={12} sx={{mb:"3%"}}>
+        <Typography variant="h3" style={{fontFamily:"Lora"}} >Look At Your Customers</Typography>
+        </Grid>
+
+        <Grid item xs={12} sm={12} sx={{mb:"3%"}}>
         <div id="thisButton" className="getCompanies">
 
 
@@ -78,6 +88,8 @@ useEffect(()=>{
         setLoad(!isLoad)
 
     }}>Show Customers</ColorButton>
+        </div>
+
 
 
         <Collapse in={collapse}>
@@ -85,27 +97,25 @@ useEffect(()=>{
             <CustomerTable customer = {customers}/>
         </div>
     </Collapse>
+    </Grid>
 
 
 
 
 
-    <br/>
-    <br/>
+
 
     
     <ErrorMessage isError={isError} myError={myError} onClickHandle={()=>setError(false)}/>
 
 
-    <br/>
-    <br/>
-
-    <br/>
-    <br/>
-
-
         
-    </div>
+                
+                
+    </Grid>
+
+
+</Container>
 );
 }
 

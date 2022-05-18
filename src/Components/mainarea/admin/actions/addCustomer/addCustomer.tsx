@@ -76,7 +76,6 @@ function AddCustomer(): JSX.Element {
 
         <Grid item xs={12} sm ={12}>
 
-        </Grid>
         <Box
             component="form"
             sx={{
@@ -143,6 +142,8 @@ function AddCustomer(): JSX.Element {
              Welcome to the place where we add Customers :)
         </Typography>
         </Box>
+        </Grid>
+
 
         <SuccsessMessage isSuccesses={isSuccesses} sucMessage={sucMessage} onClickHandle={()=>setIsSuccesses(false)}/>
         <ErrorMessage isError={isError} myError={myError} onClickHandle={()=>setError(false)}/>

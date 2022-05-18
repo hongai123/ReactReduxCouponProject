@@ -170,7 +170,7 @@ function UpdateCoupon(): JSX.Element {
                 onChange={ (e) => { setPrice(Number(e.target.value)) } }
             />
              <br/>
-             <FormControl sx={{ml:"0.4vw" ,  mt:"1%"}} >
+             <FormControl sx={{ml:"0.4vw" ,  mt:"1%",width:"19%", mr:"0.7%", height:"100%"}} >
             <InputLabel  className="inputRounded" id="demo-simple-select-label"> Category </InputLabel>
 
             <Select

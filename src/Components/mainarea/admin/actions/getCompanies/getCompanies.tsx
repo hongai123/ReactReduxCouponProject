@@ -11,6 +11,8 @@ import { grey } from '@mui/material/colors';
 import ErrorMessage from "../../../../popupMessages/errorMessage/errorMessage";
 import { Collapse } from "@mui/material";
 import { TextField } from "@mui/material";
+import { Container, Typography, Grid } from '@mui/material';
+
 
 
 
@@ -77,14 +79,24 @@ const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
   }));
 
     return (
+        <Container maxWidth="lg" sx={{display:"flex" , flexDirection:"column" , alignContent:"center"}}>
+
+        <Grid container spacing={2} sx={{display:"flex" , flexDirection:"column" , mb:"10%"}}>
+
+        <Grid item xs={12} sm={12} sx={{mb:"3%"}}>
+        <Typography variant="h3" style={{fontFamily:"Lora"}} >Look At Your Companies</Typography>
+        </Grid>
+        <Grid item xs={12} sm={12} sx={{mb:"3%"}}>
         <div id="thisButton" className="getCompanies">
 
 
-            <ColorButton onClick={()=>{    
+            <ColorButton
+            onClick={()=>{    
             setCollapse(!collapse)
             setLoad(!isLoad)
 
         }}>Show Companies</ColorButton>
+                </div>
 
 
             <Collapse in={collapse}>
@@ -92,27 +104,20 @@ const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
 			<CompanyTable company={companies}/>
             </div>
         </Collapse>
+        </Grid>
 
-
-
-
-
-        <br/>
-        <br/>
 
         
         <ErrorMessage isError={isError} myError={myError} onClickHandle={()=>setError(false)}/>
 
 
-        <br/>
-        <br/>
-
-        <br/>
-        <br/>
-
 
             
-        </div>
+                
+        </Grid>
+
+
+        </Container>
     );
 }
 

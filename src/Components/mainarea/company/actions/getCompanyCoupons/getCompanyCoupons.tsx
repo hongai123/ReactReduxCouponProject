@@ -13,6 +13,7 @@ import ErrorMessage from "../../../../popupMessages/errorMessage/errorMessage";
 import { Collapse } from "@mui/material";
 import { TextField } from "@mui/material";
 import GetOneCompany from "../../../admin/actions/getOneCompany/getOneCompany";
+import { Container, Typography, Grid, Box } from '@mui/material';
 
 
 
@@ -47,7 +48,8 @@ function GetCompanyCoupons(): JSX.Element {
             
             setError(true);
         })
-    },[token])
+    },[token,collapse])
+
 
     useEffect(()=>{
         console.log(isError)
@@ -69,7 +71,20 @@ function GetCompanyCoupons(): JSX.Element {
 
 
     return (
-        <div className="coupons">
+        <Container maxWidth="lg" sx={{display:"flex" , flexDirection:"column" , alignContent:"center"}}>
+
+        <Grid container spacing={2} sx={{display:"flex" , flexDirection:"column"}}>
+            <Box sx={{borderTop:1 ,borderColor:"divider"}}/>
+
+        <Grid item xs={12} sm={12} sx={{mb:"3%"}}>
+        <Typography variant="h3" style={{fontFamily:"Lora"}} >The Company Coupons</Typography>
+        </Grid>
+
+        <Grid item xs={12} sm={12} sx={{mb:"0"}}>
+        <Typography variant="body1" style={{fontFamily:"Lora"}} >press here</Typography>
+        </Grid>
+
+        <Grid item xs={12} sm={12} sx={{mb:"3%"}}>
 
         <ColorButton onClick={()=>{    
             setCollapse(!collapse)
@@ -82,12 +97,15 @@ function GetCompanyCoupons(): JSX.Element {
             </div>
 </Collapse>
 
-<GetOneCompany/>
+        </Grid>
+
 
 <ErrorMessage isError={isError} myError={myError} onClickHandle={()=>setError(false)}/>
+</Grid>
 
 
-        </div>
+</Container>
+
     );
 }
 

@@ -11,6 +11,8 @@ import { grey } from '@mui/material/colors';
 import ErrorMessage from "../../../../popupMessages/errorMessage/errorMessage";
 import { Box, Collapse } from "@mui/material";
 import { TextField } from "@mui/material";
+import { Container, Typography, Grid } from '@mui/material';
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 
 function CouponsByCategory(): JSX.Element {
@@ -70,41 +72,67 @@ function CouponsByCategory(): JSX.Element {
 
 
     return (
+        <Container maxWidth="lg" sx={{display:"flex" , flexDirection:"column" , alignContent:"center"}}>
+
+        <Grid container spacing={2} sx={{display:"flex" , flexDirection:"column"}}>
+
+        <Grid item xs={12} sm={12}>
+        <Typography variant="h3" style={{fontFamily:"Lora"}} >Show Coupon By Category</Typography>
+        </Grid>
+
+        <Grid item xs={12} sm ={12}>
+        
+
         <div className="coupons">
 
         <ColorButton             sx={{mb:"1%"}}
  onClick={()=>{    
             setCollapse(!collapse)
+            setCategoryID(0)
 
         }}>SHOW COUPONS BY CATEGORY</ColorButton>
+
+</div>
+
         
 
 <Collapse in={collapse} timeout={900}>
-            <Box>
-            <TextField 
-            required
-            id="categoryID"
-            label="category id"
-            placeholder="ID"
-            type="number"
-            value={categoryID}
-            InputProps={{inputProps:{min:0, max:5}}}
-            onChange={(e)=>setCategoryID(Number(e.target.value))}
-            sx={{mr:"1%"}}
-            />
-            <ColorButton onClick={handleClick}>submit</ColorButton>
+    <FormControl   sx={{ml:"0.4vw" ,  mt:"0.8%", width:"19%", mr:"0.7%"}} >
+        <InputLabel  className="inputRounded" id="demo-simple-select-label"> Category </InputLabel>
 
-            {couponss&&<CouponBox coupons={couponss}/>}
-
+            <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                label="Category"
+                placeholder="Category"
+                value={categoryID}
+                onChange = {(e)=>{setCategoryID(Number(e.target.value))}}
+                sx={{borderRadius:"15px", mt:"1%" , mb:"1%" , fontSize:"0.8rem"}}
             
+            >
+              <MenuItem value={"1"}>CARS</MenuItem>
+              <MenuItem value={"2"}>PAINTING</MenuItem>
+              <MenuItem value={"3"}>WHEELS</MenuItem>
+              <MenuItem value={"4"}>YACHT</MenuItem>
+              <MenuItem value={"5"}>MOTORCYCLE</MenuItem>
+            </Select>
+            <ColorButton onClick={handleClick}>submit</ColorButton>
+     </FormControl>
 
-            </Box>
+     {couponss&&<CouponBox coupons={couponss}/>}
+
+
 </Collapse>
+</Grid>
+
 
 <ErrorMessage isError={isError} myError={myError} onClickHandle={()=>setError(false)}/>
 
+</Grid>
 
-        </div>
+
+</Container>
+
     );
 }
 

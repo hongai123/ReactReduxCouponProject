@@ -11,6 +11,8 @@ import { grey } from '@mui/material/colors';
 import ErrorMessage from "../../../../popupMessages/errorMessage/errorMessage";
 import { Box, Collapse } from "@mui/material";
 import { TextField } from "@mui/material";
+import { Container, Typography, Grid } from '@mui/material';
+
 
 function CouponsByMaxPrice(): JSX.Element {
     const [couponss,setCoupons] = useState<CouponModel[]>([])
@@ -69,9 +71,17 @@ function CouponsByMaxPrice(): JSX.Element {
 
 
     return (
-        <div className="coupons">
+        <Container maxWidth="lg" sx={{display:"flex" , flexDirection:"column" , alignContent:"center"}}>
 
-        <ColorButton             sx={{mb:"1%"}}
+        <Grid container spacing={2} sx={{display:"flex" , flexDirection:"column"}}>
+
+        <Grid item xs={12} sm={12}>
+        <Typography variant="h3" style={{fontFamily:"Lora"}} >Show Coupon By MAX-PRICE</Typography>
+        </Grid>
+
+        <Grid item xs={12} sm ={12}>
+
+        <ColorButton  sx={{mb:"1%"}}
  onClick={()=>{    
             setCollapse(!collapse)
 
@@ -79,9 +89,10 @@ function CouponsByMaxPrice(): JSX.Element {
         
 
 <Collapse in={collapse} timeout={900}>
-            <Box>
+            <Box sx={{mt:"1%"}}>
             <TextField 
             required
+            className="inputRounded"
             id="maxPrice"
             label="max price"
             placeholder="MAXPRICE"
@@ -91,7 +102,8 @@ function CouponsByMaxPrice(): JSX.Element {
             onChange={(e)=>setMaxPrice(Number(e.target.value))}
             sx={{mr:"1%" , width:"10%"}}
             />
-            <ColorButton onClick={handleClick}>submit</ColorButton>
+            
+            <ColorButton style={{borderRadius:"15px"}} onClick={handleClick}>submit</ColorButton>
 
             {couponss&&<CouponBox coupons={couponss}/>}
 
@@ -99,11 +111,16 @@ function CouponsByMaxPrice(): JSX.Element {
 
             </Box>
 </Collapse>
+</Grid>
+
 
 <ErrorMessage isError={isError} myError={myError} onClickHandle={()=>setError(false)}/>
 
 
-        </div>
+</Grid>
+
+
+</Container>
     );
 }
 

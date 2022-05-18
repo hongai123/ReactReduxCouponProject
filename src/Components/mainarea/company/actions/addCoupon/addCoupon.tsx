@@ -189,7 +189,7 @@ function AddCoupon(): JSX.Element {
             <br/> 
             <br/> 
 
-            <Button variant="contained" onClick={handleClick} sx={{position:"absolute" , left:"10.2%" ,display:"flow"}} >
+            <Button  variant="contained" onClick={handleClick} sx={{  ml:"1vw" , mt:"5vh"}} style={{borderRadius:"15px"}} >
                 submit
             </Button>
         </Box>

@@ -72,7 +72,6 @@ function UpdateCustomer(): JSX.Element {
 
         <Grid item xs={12} sm ={12}>
 
-        </Grid>
         <Box
             component="form"
             sx={{
@@ -135,6 +134,7 @@ function UpdateCustomer(): JSX.Element {
                 submit
             </Button>
         </Box>
+        </Grid>
 
 
         <Box 

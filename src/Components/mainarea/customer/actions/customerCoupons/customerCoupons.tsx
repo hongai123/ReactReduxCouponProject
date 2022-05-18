@@ -12,6 +12,8 @@ import { grey } from '@mui/material/colors';
 import ErrorMessage from "../../../../popupMessages/errorMessage/errorMessage";
 import { Collapse } from "@mui/material";
 import { TextField } from "@mui/material";
+import { Container, Typography, Grid, Box } from '@mui/material';
+
 
 function CustomerCoupons(): JSX.Element {
     const url = "http://localhost:8080/customer/AllCustomerCoupon"
@@ -67,8 +69,20 @@ function CustomerCoupons(): JSX.Element {
 
 
     return (
-        <div className="coupons">
+        <Container maxWidth="lg" sx={{display:"flex" , flexDirection:"column" , alignContent:"center"}}>
 
+        <Grid container spacing={2} sx={{display:"flex" , flexDirection:"column"}}>
+            <Box sx={{borderTop:1 ,borderColor:"divider"}}/>
+
+        <Grid item xs={12} sm={12} sx={{mb:"3%"}}>
+        <Typography variant="h3" style={{fontFamily:"Lora"}} >Customer Coupons</Typography>
+        </Grid>
+
+        <Grid item xs={12} sm={12} sx={{mb:"0"}}>
+        <Typography variant="body1" style={{fontFamily:"Lora"}} >press here</Typography>
+        </Grid>
+
+        <Grid item xs={12} sm={12} sx={{mb:"3%"}}>
         <ColorButton onClick={()=>{    
             setCollapse(!collapse)
 
@@ -78,16 +92,18 @@ function CustomerCoupons(): JSX.Element {
             <div>
 			<CouponBox coupons={couponss} compare={coupons} />
             </div>
-
-          
-            
 </Collapse>
+        </Grid>
 
 <ErrorMessage isError={isError} myError={myError} onClickHandle={()=>setError(false)}/>
 
 
-        </div>
-    );
+</Grid>
+
+
+</Container>
+
+);
 }
 
 export default CustomerCoupons;

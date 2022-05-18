@@ -65,7 +65,6 @@ const onClickHandle = ()=>{
 
         <Grid item xs={12} sm ={12}>
 
-        </Grid>
         
         <Box
             component="form"
@@ -106,6 +105,8 @@ const onClickHandle = ()=>{
              Welcome to the place where we Delete Customers :)
         </Typography>
         </Box>
+        </Grid>
+
 
 
             <SuccsessMessage isSuccesses={isSuccesses} sucMessage={sucMessage} onClickHandle={()=>setIsSuccesses(false)}/>

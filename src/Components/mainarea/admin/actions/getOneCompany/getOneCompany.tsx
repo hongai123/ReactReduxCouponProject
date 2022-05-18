@@ -11,6 +11,8 @@ import { grey } from '@mui/material/colors';
 import ErrorMessage from "../../../../popupMessages/errorMessage/errorMessage";
 import { Box, Collapse } from "@mui/material";
 import { TextField } from "@mui/material";
+import { Container, Typography, Grid } from '@mui/material';
+
 
 
 function GetOneCompany(): JSX.Element {
@@ -80,10 +82,25 @@ const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
 
 
     return (
-        <div>
+        <Container maxWidth="lg" sx={{display:"flex" , flexDirection:"column" , alignContent:"center"}}>
+
+        <Grid container spacing={2} sx={{display:"flex" , flexDirection:"column"}}>
+            <Box sx={{borderTop:1 ,borderColor:"divider"}}/>
+
+        <Grid item xs={12} sm={12} sx={{mb:"3%"}}>
+        <Typography variant="h3" style={{fontFamily:"Lora"}} >Find Single Company</Typography>
+        </Grid>
+
+        <Grid item xs={12} sm={12} sx={{mb:"0"}}>
+        <Typography variant="body1" style={{fontFamily:"Lora"}} >Please enter company ID</Typography>
+        </Grid>
+
+        <Grid item xs={12} sm={12} sx={{mb:"3%"}}>
+
         <Box>
         <TextField
                 required
+                className="inputRounded"
                 type="number"
                 id="id"
                 label="id"
@@ -108,12 +125,17 @@ const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
             </div>
         </Collapse>
         </div>
+        </Box>
+
+    </Grid>
 
         <ErrorMessage isError={isError} myError={myError} onClickHandle={()=>setError(false)}/>
 
-        </Box>
+        </Grid>
 
-        </div>
+
+</Container>
+
     );
 }
 

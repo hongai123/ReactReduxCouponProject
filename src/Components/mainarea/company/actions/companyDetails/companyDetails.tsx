@@ -5,10 +5,12 @@ import { CompanyModel } from "../../../../model/companyModel/companyModel";
 import { useTypedSelector } from "../../../../../hooks/useTypedSelector";
 import { Box, TextField } from "@mui/material";
 import ErrorMessage from '../../../../popupMessages/errorMessage/errorMessage';
+import { Container,Grid,Typography } from "@mui/material";
+import CompanyTable from "../../../../style-box/companyTable/companyTable";
 
 
 function CompanyDetails(): JSX.Element {
-const [company,setCompany] = useState<CompanyModel>()
+const [company,setCompany] = useState<CompanyModel[]>([])
 const {token} = useTypedSelector(state=>state.loginRed);
 const [load,setLoad] = useState(false)
 const [isError,setError] = useState(false);
@@ -23,7 +25,7 @@ useEffect(()=>{
             'Authorization': token ? token : "Bearer error"
         }
     }).then((response)=>{
-        setCompany(response.data)
+        setCompany([...[],response.data])
         setLoad(true);
 
 
@@ -40,15 +42,14 @@ useEffect(()=>{
 
 
     return (
-        <div className="companyDetails">
-            <Box>
-                {company?.name}
-            </Box>
+        <div>
 
-            <ErrorMessage isError={isError} myError={myError} onClickHandle={()=>setError(false)}/>
+        <CompanyTable company={company}/>
+        <ErrorMessage isError={isError} myError={myError} onClickHandle={()=>setError(false)}/>
 
-			
+
         </div>
+
     );
 }
 

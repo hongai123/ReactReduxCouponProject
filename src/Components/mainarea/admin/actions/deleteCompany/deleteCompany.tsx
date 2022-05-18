@@ -69,7 +69,6 @@ const onClickHandle = ()=>{
 
         <Grid item xs={12} sm ={12}>
 
-        </Grid>
         <Box
             component="form"
             sx={{
@@ -114,6 +113,8 @@ const onClickHandle = ()=>{
              Welcome to the place where we Delete Companies :)
         </Typography>
         </Box>
+        </Grid>
+
 
         <SuccsessMessage isSuccesses={isSuccesses} sucMessage={sucMessage} onClickHandle={()=>setIsSuccesses(false)}/>
         <ErrorMessage isError={isError} myError={myError} onClickHandle={()=>setError(false)}/>

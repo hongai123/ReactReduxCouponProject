@@ -6,6 +6,7 @@ import Login from './Login';
 import Logout from './Logout';
 import { useEffect } from "react";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
+import Cart from "../../shop/cart/cart";
 
 
 function Topbar(): JSX.Element {
@@ -74,7 +75,7 @@ function Topbar(): JSX.Element {
 
               {userRole==="CUSTOMER"&&<li>
                   <Link id="GFG" to="/cart" >
-                  <ShoppingCartIcon></ShoppingCartIcon>
+                  <Cart/>
                   </Link>
               </li>}
               

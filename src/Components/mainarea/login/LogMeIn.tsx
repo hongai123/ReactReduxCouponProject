@@ -16,12 +16,12 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import {useActionOnCustomer, useActions} from "../../hooks/useActions";
-import { useTypedSelector } from "../../hooks/useTypedSelector"
+import {useActionOnCustomer, useActions} from "../../../hooks/useActions";
+import { useTypedSelector } from "../../../hooks/useTypedSelector"
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios, { AxiosError } from 'axios';
-import {CouponModel} from "../model/couponModel/couponModel"
+import {CouponModel} from "../../model/couponModel/couponModel"
 import { FormHelperText } from '@mui/material';
 
 

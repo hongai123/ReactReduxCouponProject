@@ -12,3 +12,4 @@ interface DeleteCoupons {
   type:ActionType.LOGOUT_USER;
   payload:[]
 }
+

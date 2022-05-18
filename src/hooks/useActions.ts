@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
-import { actionCreators,actionCreatorsCustomer } from "../redux-state";
+import { actionCreators,actionCreatorsCart,actionCreatorsCustomer } from "../redux-state";
 
 export const useActions = () => {
   const dispatch = useDispatch();
@@ -12,4 +12,11 @@ export const useActions = () => {
 export const useActionOnCustomer = () =>{
   const dispatch = useDispatch();
   return bindActionCreators(actionCreatorsCustomer,dispatch);
+}
+
+
+
+export const useActionOnCart = () =>{
+  const dispatch =useDispatch();
+  return bindActionCreators(actionCreatorsCart,dispatch)
 }

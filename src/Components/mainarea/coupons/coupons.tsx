@@ -8,11 +8,12 @@ import { styled } from '@mui/material/styles';
 import Button, { ButtonProps } from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { grey } from '@mui/material/colors';
-import { Collapse } from "@mui/material";
+import { Collapse, Container , Grid } from "@mui/material";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 
 interface couponsToCompareProps{
     couponsCompare?:CouponModel[];
+    onClick?:()=>void;
 }
 
 function Coupons(props:couponsToCompareProps): JSX.Element {
@@ -42,21 +43,27 @@ function Coupons(props:couponsToCompareProps): JSX.Element {
 
 
     return (
-        <div className="coupons">
-            <div id="buttonToRemove" className="buttomDesign"  >
-            <ColorButton  onClick={()=>{
-                setRefresh(!refresh);
+        <Container maxWidth="lg" sx={{mt:"5%"}}>
 
-            }}>Show Coupons</ColorButton>
-            </div>
-            <Collapse in={refresh} timeout={900}>
-            <div id="couponsShow" >
+            <Grid container spacing={2} sx={{display:"flex", flexDirection:"column"}}>
 
-            <CouponBox coupons={couponss} compare={coupons}/>
 
-            </div>
-            </Collapse>
-        </div>
+                <Grid item xs={12} sm ={12}>    
+
+                <ColorButton  onClick={()=>{
+                    setRefresh(!refresh);
+
+                }}>Show Coupons</ColorButton>
+                <Collapse in={refresh} timeout={900}>
+
+                <CouponBox coupons={couponss} compare={coupons} onClick={props.onClick}/>
+
+                </Collapse>
+                </Grid>    
+
+
+            </Grid>
+        </Container>
     );
 }
 

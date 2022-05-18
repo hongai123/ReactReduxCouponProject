@@ -18,7 +18,8 @@ import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import {useNavigate} from "react-router-dom"
 import { customerModel } from "../../model/customerModel/customerModel";
 import BuyCoupon from "../../mainarea/customer/actions/buyCoupon/buyCoupon";
-
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import AddToCartButton from "../../shop/addToCart/addToCart";
 
 
 
@@ -27,6 +28,7 @@ import BuyCoupon from "../../mainarea/customer/actions/buyCoupon/buyCoupon";
 interface CouponProps{
     coupons:CouponModel[]
     compare?:CouponModel[]
+    onClick?: ()=>void
 }
 
 function CouponBox(props:CouponProps): JSX.Element {
@@ -69,6 +71,9 @@ function CouponBox(props:CouponProps): JSX.Element {
                 <CardActions sx={{position:"relative"}}>
                   {role==="CUSTOMER"? props.compare?.find(c=>c.coupon_id === coupon.coupon_id)?<Button size="small">purchased</Button>:<BuyCoupon couponProp={coupon}/> :(role==="COMPANY" || role === "ADMIN" ? "":<Button size="small" onClick={()=>nav("/login")}>TO BUY</Button>)}
                   <BasicModalCoupon coupons={coupon} buttonInfo="More"/>
+                  
+                  {/* WE WILL ADD HERE A FUNCTION THAT WILL RECIEVE A COUPON AND IT WILL ADD IT TO THE CART, WE WILL HAVE TO CREATE "ADDTOCART FUNCTION WHICH ACCEPT COUPON" */}
+                  {role==="CUSTOMER"&&<AddToCartButton coupon={coupon}  />}
                 </CardActions>
               </Card>
             </Grid>

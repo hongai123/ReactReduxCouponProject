@@ -12,6 +12,7 @@ import { grey } from '@mui/material/colors';
 import ErrorMessage from "../../../../popupMessages/errorMessage/errorMessage";
 import { Collapse } from "@mui/material";
 import { TextField } from "@mui/material";
+import GetOneCompany from "../../../admin/actions/getOneCompany/getOneCompany";
 
 
 
@@ -80,6 +81,8 @@ function GetCompanyCoupons(): JSX.Element {
 			<CouponBox coupons={couponss}/>
             </div>
 </Collapse>
+
+<GetOneCompany/>
 
 <ErrorMessage isError={isError} myError={myError} onClickHandle={()=>setError(false)}/>
 

@@ -9,4 +9,7 @@ image:string=""
 price:number=0
 start_date:string= ""
 title:string = ""
+categoryString:string = ""
+company_string:string="";
+
 }

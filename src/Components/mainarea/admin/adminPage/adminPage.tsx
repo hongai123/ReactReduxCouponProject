@@ -117,8 +117,6 @@ function AdminPage() :JSX.Element {
         </TabPanel>
         <TabPanel value={value} index={3}>
           <GetCompanies/>
-          <br/>
-          <GetOneCompany/>
         </TabPanel>
         <TabPanel value={value} index={4}>
           <GetCustomers/>

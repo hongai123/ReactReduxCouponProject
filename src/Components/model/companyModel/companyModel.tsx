@@ -7,4 +7,5 @@ export class CompanyModel{
     id?:number;
     coupons:CouponModel[]=[];
 
+
 }

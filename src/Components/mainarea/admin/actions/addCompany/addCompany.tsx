@@ -43,7 +43,8 @@ function AddCompany(): JSX.Element {
             email: email,
             name: name,
             password: password,
-            coupons:[]
+            coupons:[],
+            
         };
         axios.post(url, user, {
             headers: {

@@ -10,6 +10,9 @@ import { useTypedSelector } from "../../../../../hooks/useTypedSelector";
 import SuccsessMessage from '../../../../popupMessages/succsessMessage/succsessMessage';
 import {useEffect} from "react";
 import ErrorMessage from '../../../../popupMessages/errorMessage/errorMessage';
+import { Container, Typography, Grid } from '@mui/material';
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+
 
 function AddCoupon(): JSX.Element {
     const {token} = useTypedSelector((state)=>state.loginRed);
@@ -52,7 +55,10 @@ function AddCoupon(): JSX.Element {
             image: image,
             price: price,
             start_date: startDate,
-            title: title
+            title: title,
+            categoryString:"CARS",
+            company_string:""
+
         };
 
         axios.post(url, user, {
@@ -77,7 +83,16 @@ function AddCoupon(): JSX.Element {
     }
 
     return (
-       <div>
+        <Container maxWidth="lg" sx={{display:"flex" , flexDirection:"column" , alignContent:"center"}}>
+
+        <Grid container spacing={2} sx={{display:"flex" , flexDirection:"column"}}>
+
+        <Grid item xs={12} sm={12}>
+        <Typography variant="h3" style={{fontFamily:"Lora"}} >Add Coupon</Typography>
+        </Grid>
+
+        <Grid item xs={12} sm ={12}>
+        
         <Box
             component="form"
             sx={{
@@ -86,8 +101,10 @@ function AddCoupon(): JSX.Element {
             noValidate
             autoComplete="off"
             >
-            <br/> <TextField
+            <br/>
+             <TextField
                 required
+                className="inputRounded"
                 id="title"
                 label="Title"
                 placeholder="Title"
@@ -96,6 +113,7 @@ function AddCoupon(): JSX.Element {
             />
             <TextField
                 required
+                className="inputRounded"
                 type="number"
                 id="amount"
                 label="Amount"
@@ -103,18 +121,31 @@ function AddCoupon(): JSX.Element {
                 value={amount}
                 onChange={ (e) => { setAmount(Number(e.target.value)) } }
             />
-            <br/> <TextField
-                required
-                type="number"
-                InputProps={{inputProps:{min:0, max:5}}}
-                id="categoryId"
-                label="Category Id"
-                placeholder="Category Id"
+            <br/>                                                                                                                                   
+            <FormControl   sx={{ml:"0.4vw" ,  mt:"0.8%", width:"19%", mr:"0.7%", height:"100%"}} >
+            <InputLabel  className="inputRounded" id="demo-simple-select-label"> Category </InputLabel>
+
+            <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                label="Category"
+                placeholder="Category"
                 value={categoryId}
-                onChange={ (e) => { setCategoryId(Number(e.target.value)) } }
-            />
+                onChange = {(e)=>{setCategoryId(Number(e.target.value))}}
+                sx={{borderRadius:"15px", mt:"1%" , mb:"1%" , fontSize:"0.8rem"}}
+            
+            >
+             <MenuItem value={"1"}>CARS</MenuItem>
+             <MenuItem value={"2"}>PAINTING</MenuItem>
+             <MenuItem value={"3"}>WHEELS</MenuItem>
+             <MenuItem value={"4"}>YACHT</MenuItem>
+             <MenuItem value={"5"}>MOTORCYCLE</MenuItem>
+            </Select>
+            </FormControl>
+
              <TextField
                 required
+                className="inputRounded"
                 id="description"
                 label="Description"
                 placeholder="Description"
@@ -123,6 +154,7 @@ function AddCoupon(): JSX.Element {
             />
             <br/> <TextField
                 required
+                className="inputRounded"
                 type="date"
                 id="startDate"
                 value={startDate}
@@ -130,6 +162,7 @@ function AddCoupon(): JSX.Element {
             />
              <TextField
                 required
+                className="inputRounded"
                 type="date"
                 id="endDate"
                 value={endDate}
@@ -137,6 +170,7 @@ function AddCoupon(): JSX.Element {
             />
             <br/> <TextField
                 required
+                className="inputRounded"
                 id="image"
                 label="Image"
                 placeholder="Image"
@@ -145,6 +179,7 @@ function AddCoupon(): JSX.Element {
             />
             <TextField
                 required
+                className="inputRounded"
                 id="price"
                 label="Price"
                 placeholder="Price"
@@ -158,11 +193,27 @@ function AddCoupon(): JSX.Element {
                 submit
             </Button>
         </Box>
+        </Grid>
+        <Box 
+         className='SomeInfo'
+         width="100%"
+         height="50%"
+         sx={{
+            borderLeft:1,
+            borderColor:"divider"
+        }}>
+        <Typography variant="body1" style={{fontFamily:"Lora"}} className='SomeInfoText' >
+            <br/>
+             Welcome to the place where we add coupons :)
+        </Typography>
+        </Box>
 
         <SuccsessMessage isSuccesses={isSuccesses} sucMessage={sucMessage} onClickHandle={()=>setIsSuccesses(false)}/>
         <ErrorMessage isError={isError} myError={myError} onClickHandle={()=>setError(false)}/>
-       </div>
+    </Grid>
 
+
+    </Container>
     );
 }
 

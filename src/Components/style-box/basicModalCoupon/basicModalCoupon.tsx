@@ -46,7 +46,9 @@ function BasicModalCoupon(props:couponProps): JSX.Element {
               Coupon price : {props.coupons.price}<br/>
               start date : {props.coupons.start_date}<br/>
               end date : {props.coupons.end_date}<br/>
-              amount : {props.coupons.amount}
+              amount : {props.coupons.amount}<br/>
+              category : {props.coupons.categoryString}<br/>
+              company : {props.coupons.company_string}
             </Typography>
           </Box>
         </Modal>

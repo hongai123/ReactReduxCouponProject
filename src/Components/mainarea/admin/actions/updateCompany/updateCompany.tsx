@@ -33,7 +33,7 @@ function UpdateCompany(): JSX.Element {
             name: "string",
             password: password,
             id:companyId,
-            coupons:[]
+            coupons:[],
             
         };
         axios.put(url, user, {

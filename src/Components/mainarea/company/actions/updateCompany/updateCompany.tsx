@@ -11,6 +11,8 @@ import { CouponModel } from "../../../../model/couponModel/couponModel";
 import { useTypedSelector } from "../../../../../hooks/useTypedSelector";
 import SuccsessMessage from "../../../../popupMessages/succsessMessage/succsessMessage";
 import ErrorMessage from "../../../../popupMessages/errorMessage/errorMessage";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { Container, Typography, Grid } from '@mui/material';
 
 function UpdateCoupon(): JSX.Element {
     
@@ -44,7 +46,10 @@ function UpdateCoupon(): JSX.Element {
             image: image,
             price: price,
             start_date: startDate,
-            title: title
+            title: title,
+            categoryString:"CARS",
+            company_string:""
+
         };
 
         axios.put(url, user, {
@@ -71,7 +76,16 @@ function UpdateCoupon(): JSX.Element {
     }
 
     return (
-       <div>
+        <Container maxWidth="lg" sx={{display:"flex" , flexDirection:"column" , alignContent:"center"}}>
+
+        <Grid container spacing={2} sx={{display:"flex" , flexDirection:"column"}}>
+
+        <Grid item xs={12} sm={12}>
+        <Typography variant="h3" style={{fontFamily:"Lora"}} >Update Coupon</Typography>
+        </Grid>
+
+        <Grid item xs={12} sm ={12}>
+
         <Box
             component="form"
             sx={{
@@ -82,6 +96,7 @@ function UpdateCoupon(): JSX.Element {
             >
                 <br/> <TextField
                 required
+                className="inputRounded"
                 id="title"
                 label="Title"
                 placeholder="Title"
@@ -90,6 +105,7 @@ function UpdateCoupon(): JSX.Element {
             />
                <TextField
                 required
+                className="inputRounded"
                 type="number"
                 id="amount"
                 label="Amount"
@@ -97,17 +113,19 @@ function UpdateCoupon(): JSX.Element {
                 value={amount}
                 onChange={ (e) => { setAmount(Number(e.target.value)) } }
             />
-            <br/> <TextField
+            <br/><TextField
                 required
+                className="inputRounded"
                 type="number"
-                id="categoryId"
-                label="Category Id"
-                placeholder="Category Id"
-                value={categoryId}
-                onChange={ (e) => { setCategoryId(Number(e.target.value)) } }
-            />
+                id="couponId"
+                label="Coupon Id"
+                placeholder="Coupon Id"
+                value={couponId}
+                onChange={ (e) => { setCouponId(Number(e.target.value)) } }
+            /> 
             <TextField
                 required
+                className="inputRounded"
                 type="date"
                 id="startDate"
                
@@ -116,6 +134,7 @@ function UpdateCoupon(): JSX.Element {
             />
             <br/> <TextField
                 required
+                className="inputRounded"
                 id="description"
                 label="Description"
                 placeholder="Description"
@@ -124,6 +143,7 @@ function UpdateCoupon(): JSX.Element {
             />
              <TextField
                 required
+                className="inputRounded"
                 type="date"
                 id="endDate"
                 
@@ -132,6 +152,7 @@ function UpdateCoupon(): JSX.Element {
             />
             <br/> <TextField
                 required
+                className="inputRounded"
                 id="image"
                 label="Image"
                 placeholder="Image"
@@ -140,6 +161,7 @@ function UpdateCoupon(): JSX.Element {
             />
             <TextField
                 required
+                className="inputRounded"
                 type="number"
                 id="price"
                 label="Price"
@@ -147,24 +169,58 @@ function UpdateCoupon(): JSX.Element {
                 value={price}
                 onChange={ (e) => { setPrice(Number(e.target.value)) } }
             />
-             <br/><TextField
-                required
-                type="number"
-                id="couponId"
-                label="Coupon Id"
-                placeholder="Coupon Id"
-                value={couponId}
-                onChange={ (e) => { setCouponId(Number(e.target.value)) } }
-            />
+             <br/>
+             <FormControl sx={{ml:"0.4vw" ,  mt:"1%"}} >
+            <InputLabel  className="inputRounded" id="demo-simple-select-label"> Category </InputLabel>
+
+            <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                label="Category"
+                placeholder="Category"
+                value={categoryId}
+                onChange = {(e)=>{setCategoryId(Number(e.target.value))}}
+                sx={{borderRadius:"15px", mt:"1%" , mb:"1%" , fontSize:"0.8rem"}}
+
+            
+            >
+             <MenuItem value={"1"}>CARS</MenuItem>
+             <MenuItem value={"2"}>PAINTING</MenuItem>
+             <MenuItem value={"3"}>WHEELS</MenuItem>
+             <MenuItem value={"4"}>YACHT</MenuItem>
+             <MenuItem value={"5"}>MOTORCYCLE</MenuItem>
+            </Select>
+            </FormControl>
             <br/>
-            <Button variant="contained" onClick={handleClick} >
+            <Button sx={{ml:"1vw" , mt:"5vh"}} style={{borderRadius:"15px"}} variant="contained" onClick={handleClick} >
                 submit
             </Button>
+        </Box>
+        </Grid>
+
+
+        <Box 
+         className='SomeInfo'
+         width="100%"
+         height="50%"
+         sx={{
+            borderLeft:1,
+            borderColor:"divider"
+        }}>
+        <Typography variant="body1" style={{fontFamily:"Lora"}} className='SomeInfoText' >
+            <br/>
+             Welcome to the place where we update coupons :)
+        </Typography>
         </Box>
 
         <SuccsessMessage isSuccesses={isSuccesses} sucMessage={sucMessage} onClickHandle={()=>setIsSuccesses(false)}/>
         <ErrorMessage isError={isError} myError={myError} onClickHandle={()=>setError(false)}/>
-       </div>
+
+                
+        </Grid>
+
+
+        </Container>
     );
 }
 

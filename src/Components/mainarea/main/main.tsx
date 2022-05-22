@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea, Container, Fade } from '@mui/material';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import SwipeableTextMobileStepper from "../../style-box/SwipeableTextMobileStepper";
+// import SwipeableTextMobileStepper from "../../style-box/SwipeableTextMobileStepper";
 import { fontFamily } from "@mui/system";
 
 
@@ -39,7 +39,7 @@ function NoLongerMain(): JSX.Element {
           alt=""
         /> */}
         <Box className="centerMe"   sx={{pb:"20vh", pt:"5vh" }}>
-        <Card sx={{ position:"absolute" , borderRadius:"10%" ,borderColor:"black" }}>
+        <Card sx={{ position:"absolute" , borderRadius:"20%" ,borderColor:"black" }}>
         <CardMedia
           component="img"
           height="120"
@@ -125,7 +125,7 @@ function NoLongerMain(): JSX.Element {
 
     <Grid className="centerMe" sx={{pt:"10%"}} >
       <Box className="centerMe" sx={{pt:"10%"}}>
-    <SwipeableTextMobileStepper/>
+    {/* <SwipeableTextMobileStepper/> */}
      </Box>
     </Grid>
         

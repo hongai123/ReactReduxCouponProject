@@ -73,10 +73,10 @@ function Topbar(): JSX.Element {
 
              {globalState.isLogged ? <Logout /> : <Login />}
 
-              {userRole==="CUSTOMER"&&<li>
-                  <Link id="GFG" to="/cart" >
+              {userRole==="CUSTOMER"&&
+              <li>
                   <Cart/>
-                  </Link>
+
               </li>}
               
               

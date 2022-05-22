@@ -13,16 +13,41 @@ interface GetCouponProps{
 function AddToCartButton(props:GetCouponProps): JSX.Element {
     const cartAdd = useActionOnCart();
     const {coupons} = useTypedSelector(state=>state.cartRed);
-    const [disableMe, setDisable] = useState(false)
+    const [disableMe, setDisable] = useState(false);
     const ownCoupons = useTypedSelector(state=>state.couponsReducer)
 
+    const allCoupons = [...coupons, ...ownCoupons.coupons]
+
+    // useEffect(()=>{
+    //     ownCoupons.coupons.map((c)=>{
+    //         if(c.coupon_id === props.coupon.coupon_id){
+    //             setDisable(true);
+    //         }
+    //     })
+    // },[ownCoupons.coupons])
+
+    // useEffect(()=>{
+    //     coupons.map((c)=>{
+    //         if(c.coupon_id === props.coupon.coupon_id){
+    //             setDisable(true)
+    //         }
+    //     })
+    // },[ownCoupons,coupons])
+
     useEffect(()=>{
-        ownCoupons.coupons.map((c)=>{
-            if(c.title === props.coupon.title){
+        for(const co of allCoupons ){
+            if(co.coupon_id === props.coupon.coupon_id){
                 setDisable(true);
+                break;
             }
-        })
-    },[ownCoupons.coupons])
+            else if(co.coupon_id !== props.coupon.coupon_id){
+                setDisable(false)
+            }
+
+            
+        }
+    },[coupons,ownCoupons])
+
     
     const handleOnClick = ()=>{
         const term = {

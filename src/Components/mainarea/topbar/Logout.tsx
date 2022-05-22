@@ -1,12 +1,10 @@
 import "./topbar.css";
 import * as React from 'react';
-import { Link } from 'react-router-dom';
-import { Button,IconButton } from "@mui/material";
+import { IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useActionOnCart, useActionOnCustomer, useActions } from "../../../hooks/useActions";
 import { useEffect } from "react";
 import LogoutIcon from '@mui/icons-material/Logout';
-import { useTypedSelector } from "../../../hooks/useTypedSelector";
 
 
 function Logout (){

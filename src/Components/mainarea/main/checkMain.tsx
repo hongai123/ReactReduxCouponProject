@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea, Container, Fade, Paper } from '@mui/material';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import SwipeableTextMobileStepper from "../../style-box/SwipeableTextMobileStepper";
+// import SwipeableTextMobileStepper from "../../style-box/SwipeableTextMobileStepper";
 import { fontFamily } from "@mui/system";
 import sx from "@mui/system/sx";
 
@@ -53,7 +53,7 @@ function Main(): JSX.Element {
 
         <Grid item sm={24} xs={24} sx={{ ml:"8vw", maxHeight:"100%", width:"100%" , pb:"10%"}}>
 
-        <SwipeableTextMobileStepper/>
+        {/* <SwipeableTextMobileStepper/> */}
 
         </Grid>
 

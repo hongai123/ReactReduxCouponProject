@@ -21,20 +21,17 @@ const initialState = {
 }
 
 const reducer = (state :LoginDetails = initialState , action:Action):LoginDetails=>{
-  console.log("setUP")
-  console.log(state)
+
 
   switch(action.type){
     
     case ActionType.LOGIN:{
       
-      console.log("im in login")
        return { ...state,token: action.payload[0], error:null,isLogged:true, role: action.payload[1]}
     
     }
 
     case ActionType.LOGIN_ERROR:{
-      console.log("im in error")
 
       return  {...state, token:null, error:action.payload ,isLogged:false, role:null}
 
@@ -42,7 +39,6 @@ const reducer = (state :LoginDetails = initialState , action:Action):LoginDetail
     }
 
     case ActionType.LOGOUT_USER: {
-      console.log("im in logout")
 
       return { ...state,token: null , error:null,isLogged:null, role:null}
 

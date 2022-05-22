@@ -1,3 +1,4 @@
+import { stat } from "fs";
 import { CouponModel } from "../../Components/model/couponModel/couponModel";
 import { ActionType } from "../action-types";
 import { cartActionType } from "../actions/cartActionType";
@@ -23,9 +24,7 @@ const cartReducer = (state:CartCoupons=initialState, action:cartActionType ):Car
 
     case ActionType.REMOVE_FROM_CART:{
       return {
-        ...state,
-        coupons: state.coupons.filter(c=>c.title === action.payload.title)
-      }
+        coupons:state.coupons.filter(c=>c.coupon_id !== action.payload.coupon_id)}
     }
 
     case ActionType.LOGOUT_USER:{

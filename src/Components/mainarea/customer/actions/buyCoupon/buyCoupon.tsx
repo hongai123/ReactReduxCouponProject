@@ -3,7 +3,7 @@ import { useState,useEffect } from "react";
 import { useTypedSelector } from "../../../../../hooks/useTypedSelector";
 import { Button } from "@mui/material";
 import { CouponModel } from "../../../../model/couponModel/couponModel";
-import { useActionOnCustomer } from "../../../../../hooks/useActions";
+import { useActionOnCart, useActionOnCustomer } from "../../../../../hooks/useActions";
 import axios, { AxiosError } from "axios";
 
 interface myCouponProp{
@@ -14,14 +14,25 @@ function BuyCoupon(props:myCouponProp): JSX.Element {
     const {token} = useTypedSelector(state=>state.loginRed);
     const {CustomerUploadCoupon} = useActionOnCustomer();
     const {coupons} = useTypedSelector(state=>state.couponsReducer)
+    const cartCoupon = useActionOnCart();
 
-
+    // useEffect(()=>{
+    //     const term2 = {
+    //         coupon: props.couponProp
+    //     }
+    //     cartCoupon.RemoveFromCart(term2);
+    // },[])
 
     const handleClick = ()=>{
         console.log(coupons)
         const term = {
             coupons: props.couponProp
         }
+        const term2 = {
+            coupon: props.couponProp
+        }
+        cartCoupon.RemoveFromCart(term2);
+
         const url = `http://localhost:8080/customer/purchasecoupon/${props.couponProp.coupon_id}`
         axios.put(url,{},{
             headers:{

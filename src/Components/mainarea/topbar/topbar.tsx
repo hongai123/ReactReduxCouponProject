@@ -1,7 +1,5 @@
 import "./topbar.css";
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Login from './Login';
 import Logout from './Logout';
 import { useEffect } from "react";
@@ -11,24 +9,14 @@ import Cart from "../../shop/cart/cart";
 
 function Topbar(): JSX.Element {
   const globalState= useTypedSelector((state)=>state.loginRed);
-  const [log,setLog] = useState<boolean>(false);
   const userRole = globalState.role
   let isLogged = false;
   
 
   useEffect(()=>{
     isLogged = true;
-    console.log("yayy im hereee")
 
   })
-
- 
-
- 
-  
-  
-
- 
 
     return (
 
@@ -75,9 +63,11 @@ function Topbar(): JSX.Element {
 
               {userRole==="CUSTOMER"&&
               <li>
+
                   <Cart/>
 
-              </li>}
+              </li>
+              }
               
               
 

@@ -4,8 +4,9 @@ import { actionCreators,actionCreatorsCart,actionCreatorsCustomer } from "../red
 
 export const useActions = () => {
   const dispatch = useDispatch();
-
+  
   return bindActionCreators(actionCreators,dispatch);
+
 };
 
 

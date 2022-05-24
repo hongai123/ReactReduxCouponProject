@@ -69,12 +69,12 @@ function CustomerCoupons(): JSX.Element {
 
 
     return (
-        <Container maxWidth="lg" sx={{display:"flex" , flexDirection:"column" , alignContent:"center"}}>
+        <Container maxWidth="xl" sx={{display:"flex" , flexDirection:"column" , alignContent:"center"}}>
 
         <Grid container spacing={2} sx={{display:"flex" , flexDirection:"column"}}>
             <Box sx={{borderTop:1 ,borderColor:"divider"}}/>
 
-        <Grid item xs={12} sm={12} sx={{mb:"3%"}}>
+        <Grid item xs={12} sm={12} lg={12} sx={{mb:"3%"}}>
         <Typography variant="h3" style={{fontFamily:"Lora"}} >Customer Coupons</Typography>
         </Grid>
 

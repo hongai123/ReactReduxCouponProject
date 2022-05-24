@@ -48,7 +48,7 @@ function GetCompanyCoupons(): JSX.Element {
             
             setError(true);
         })
-    },[token,collapse])
+    },[collapse])
 
 
     useEffect(()=>{
@@ -71,7 +71,7 @@ function GetCompanyCoupons(): JSX.Element {
 
 
     return (
-        <Container maxWidth="lg" sx={{display:"flex" , flexDirection:"column" , alignContent:"center"}}>
+        <Container maxWidth="xl" sx={{display:"flex" , flexDirection:"column" , alignContent:"center"}}>
 
         <Grid container spacing={2} sx={{display:"flex" , flexDirection:"column"}}>
             <Box sx={{borderTop:1 ,borderColor:"divider"}}/>

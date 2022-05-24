@@ -3,7 +3,7 @@ import { Dispatch } from 'redux'
 import { ActionType } from '../action-types'
 import { Action } from '../actions'
 
-export const logMe = (term:{token:string, error:string, role:string})=>{
+export const logMe = (term:{token:string, error:string, role:string}) => {
   return async(dispatch:Dispatch<Action>) => {
 
         if(term.token){
@@ -12,6 +12,7 @@ export const logMe = (term:{token:string, error:string, role:string})=>{
           payload : [term.token,term.role]
         })
       }
+
       else if(!term.token){
           dispatch({
           type : ActionType.LOGIN_ERROR,

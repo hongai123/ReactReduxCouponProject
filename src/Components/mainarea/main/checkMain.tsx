@@ -12,7 +12,8 @@ import sx from "@mui/system/sx";
 
 
 
-function Main(): JSX.Element {
+function Main() : JSX.Element {
+
     return (
       <Fade in={true} timeout={1200} >
 

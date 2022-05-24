@@ -9,7 +9,7 @@ import { Container, Divider, Drawer, Grid, IconButton, Typography } from "@mui/m
 import ChevronRight from "@mui/icons-material/ChevronRight";
 import CouponTable from "../../style-box/couponsTable/couponsTable";
 
-const drawerWidth = "30%";
+const drawerWidth = "20%";
 
 const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
   '& .MuiBadge-badge': {
@@ -70,6 +70,7 @@ function Cart(): JSX.Element {
           flexShrink: 0,
           '& .MuiDrawer-paper': {
             width: drawerWidth,
+            display:"flex",
           },
         }}
         variant="persistent"

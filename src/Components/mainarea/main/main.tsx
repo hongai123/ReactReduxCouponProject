@@ -12,6 +12,7 @@ import { fontFamily } from "@mui/system";
 
 
 function NoLongerMain(): JSX.Element {
+
     return (
       <Fade in={true} timeout={1200} >
       <Container>
@@ -33,11 +34,6 @@ function NoLongerMain(): JSX.Element {
 
        
 
-        {/* <img
-          className="headerImg"
-          src="https://images.pexels.com/photos/1167355/pexels-photo-1167355.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-          alt=""
-        /> */}
         <Box className="centerMe"   sx={{pb:"20vh", pt:"5vh" }}>
         <Card sx={{ position:"absolute" , borderRadius:"20%" ,borderColor:"black" }}>
         <CardMedia
@@ -50,7 +46,6 @@ function NoLongerMain(): JSX.Element {
               <h3  className="headerTitles">About Our Company</h3>
           </Typography>
           <Typography variant="body2" color="text.second" >
-            our company was created in 2022 by Huy Nguyen and his three useless teammates. <br/>
             our company helps other companies sell coupons and improve their sales among the market drastically.<br/>
             we have a unique working technique which has been proven by our satisfied customers all over the world.<br/>
             We work with big companies such as Banana, Pbay, Sellpal and Fakebook. <br/>

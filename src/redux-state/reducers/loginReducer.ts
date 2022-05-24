@@ -20,7 +20,7 @@ const initialState = {
 
 }
 
-const reducer = (state :LoginDetails = initialState , action:Action):LoginDetails=>{
+const reducer = (state:LoginDetails = initialState , action:Action):LoginDetails=>{
 
 
   switch(action.type){

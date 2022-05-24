@@ -19,6 +19,8 @@ const style = {
     p: 4,
   };
 
+
+  
   interface couponProps{
       coupons:CouponModel;
       buttonInfo:string;
@@ -29,9 +31,10 @@ function BasicModalCoupon(props:couponProps): JSX.Element {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
     return (
         <div>
-        <Button onClick={handleOpen}>{props.buttonInfo}</Button>
+        <Button onClick={handleOpen} sx={{}}> {props.buttonInfo}  </Button>
         <Modal
           open={open}
           onClose={handleClose}

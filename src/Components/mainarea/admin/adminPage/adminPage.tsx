@@ -79,7 +79,7 @@ function AdminPage() :JSX.Element {
   
     return (
       <Fade in timeout={1200}>
-      <Container maxWidth="lg" sx={{mt:"5vh"}}>
+      <Container maxWidth="xl" sx={{mt:"5vh"}}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' , maxWidth:"100%" }}>
           <Tabs 
           variant="scrollable"

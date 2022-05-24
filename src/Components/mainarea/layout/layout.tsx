@@ -9,11 +9,6 @@ import { PersistGate } from 'redux-persist/integration/react';
 import Foot from "../foot/foot";
 
 
-
-
-
-
-
 function Layout(): JSX.Element {
  
 
@@ -41,6 +36,7 @@ function Layout(): JSX.Element {
             </footer>
 
         </div>
+        
         </BrowserRouter>
    
     )

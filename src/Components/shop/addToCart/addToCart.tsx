@@ -15,7 +15,6 @@ function AddToCartButton(props:GetCouponProps): JSX.Element {
     const {coupons} = useTypedSelector(state=>state.cartRed);
     const [disableMe, setDisable] = useState(false);
     const ownCoupons = useTypedSelector(state=>state.couponsReducer)
-
     const allCoupons = [...coupons, ...ownCoupons.coupons]
 
     // useEffect(()=>{
@@ -35,17 +34,26 @@ function AddToCartButton(props:GetCouponProps): JSX.Element {
     // },[ownCoupons,coupons])
 
     useEffect(()=>{
+
         for(const co of allCoupons ){
             if(co.coupon_id === props.coupon.coupon_id){
                 setDisable(true);
                 break;
             }
             else if(co.coupon_id !== props.coupon.coupon_id){
-                setDisable(false)
-            }
+                setDisable(false);
 
+            }        
             
         }
+
+        if(allCoupons.length === 0) {
+            setDisable(false)
+        }
+
+
+
+        console.log(allCoupons)
     },[coupons,ownCoupons])
 
     

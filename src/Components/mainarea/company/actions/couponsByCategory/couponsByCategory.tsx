@@ -77,7 +77,7 @@ function CouponsByCategory(): JSX.Element {
 
         <Grid container spacing={2} sx={{display:"flex" , flexDirection:"column"}}>
 
-        <Grid item xs={12} sm={12}>
+        <Grid item xs={12} sm={12} xl={12}>
         <Typography variant="h3" style={{fontFamily:"Lora"}} >Show Coupon By Category</Typography>
         </Grid>
 

@@ -53,7 +53,7 @@ function BuyAll(): JSX.Element {
 
         }).catch((error:AxiosError)=>{
             console.log(error)
-            setMyError(error.message)
+            setMyError("Some thing went wrong")
             
             
             setError(true)

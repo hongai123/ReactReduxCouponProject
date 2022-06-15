@@ -59,10 +59,11 @@ function Topbar(): JSX.Element {
           <div className="topRight">
             <ul className="topList">
 
+              <li className="topList">
              {globalState.isLogged ? <Logout /> : <Login />}
-
+             </li>
               {userRole==="CUSTOMER"&&
-              <li>
+              <li className="topListItem">
 
                   <Cart/>
 

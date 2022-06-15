@@ -58,8 +58,7 @@ function AddCustomer(): JSX.Element {
             const err = error.response?.request.responseText
             const errMessage = JSON.stringify(err);
             console.log(errMessage)
-            setMyError(errMessage.slice(22,66)
-            )
+            setMyError(errMessage)
             
             setError(true);        })
     }
@@ -124,7 +123,7 @@ function AddCustomer(): JSX.Element {
                 onChange={ (e) => { setLaName(e.target.value) } }
             />
             <br/>
-            <Button sx={{ml:"1vw" , mt:"5vh"}} style={{borderRadius:"15px"}} variant="contained" onClick={handleClick} >
+            <Button sx={{ml:"1vw" , mt:"5vh"}} style={{borderRadius:"15px"}} variant="contained" onClick={handleClick}  disabled={(email&&password&&name&&laName)?false:true}>
                 submit
             </Button>
         </Box>

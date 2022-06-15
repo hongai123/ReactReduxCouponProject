@@ -5,6 +5,7 @@ import { Button } from "@mui/material";
 import { CouponModel } from "../../../../model/couponModel/couponModel";
 import { useActionOnCart, useActionOnCustomer } from "../../../../../hooks/useActions";
 import axios, { AxiosError } from "axios";
+import ErrorMessage from "../../../../popupMessages/errorMessage/errorMessage";
 
 interface myCouponProp{
     couponProp:CouponModel
@@ -15,6 +16,8 @@ function BuyCoupon(props:myCouponProp): JSX.Element {
     const {CustomerUploadCoupon} = useActionOnCustomer();
     const {coupons} = useTypedSelector(state=>state.couponsReducer)
     const cartCoupon = useActionOnCart();
+    const [isError,setError] = useState(false);
+    const [myError,setMyError] = useState("");
 
     // useEffect(()=>{
     //     const term2 = {
@@ -46,6 +49,12 @@ function BuyCoupon(props:myCouponProp): JSX.Element {
             console.log(response)
         }).catch((error:AxiosError)=>{
             console.log(error)
+            const err = error.response?.request.responseText
+            const errMessage = JSON.stringify(err);
+            console.log(errMessage)
+            setMyError(errMessage)
+            
+            setError(true);   
         })
 
     }
@@ -60,7 +69,7 @@ function BuyCoupon(props:myCouponProp): JSX.Element {
     return (
         <div className="buyCoupon">
             <Button size="small" onClick={handleClick} >Buy</Button>
-			
+            <ErrorMessage isError={isError} myError={myError} onClickHandle={()=>setError(false)}/>
         </div>
     );
 }

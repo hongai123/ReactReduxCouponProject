@@ -39,7 +39,7 @@ function CouponBox(props:CouponProps): JSX.Element {
         {/* End hero unit */}
         <Grid container spacing={6} sx={{color:"black"}}>
           {props.coupons.map((coupon) => (
-            <Grid item key={coupon.coupon_id} xs={12} sm={12} md={4} xl={2.4} lg={3} >
+            <Grid item key={coupon.coupon_id} xs={12} sm={12} md={6} xl={2.4} lg={4} >
               <Card
                 sx={{ height: '100%', display:"flow", flexDirection: 'column' }}
               > 

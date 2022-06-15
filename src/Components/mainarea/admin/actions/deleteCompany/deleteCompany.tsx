@@ -50,8 +50,7 @@ const onClickHandle = ()=>{
         const err = error.response?.request.responseText
         const errMessage = JSON.stringify(err);
         console.log(errMessage)
-        setMyError(errMessage.slice(22,66)
-        )
+        setMyError(errMessage)
         
         setError(true);     })
 

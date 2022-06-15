@@ -59,8 +59,7 @@ const handleOneCompany = ()=>{
         const errMessage = JSON.stringify(err);
         console.log(errMessage)
         setCollapse2(false)
-        setMyError(errMessage.slice(22,66)
-        )
+        setMyError(errMessage)
         
         setError(true);
     

@@ -125,7 +125,7 @@ function Coupons(props:couponsToCompareProps): JSX.Element {
 
 
     return (
-        <Container maxWidth="xl" sx={{mt:"5%"}}>
+        <Container maxWidth="xl" sx={{mt:"8vh"}}>
 
             <Grid container spacing={2} sx={{display:"flex", flexDirection:"column"}}>
 

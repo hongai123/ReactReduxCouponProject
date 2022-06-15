@@ -77,8 +77,7 @@ function AddCoupon(): JSX.Element {
             const errMessage = JSON.stringify(err);
             console.log(errMessage)
         
-            setMyError(errMessage.slice(22,66)
-            )
+            setMyError(errMessage)
             
             setError(true);        })
     }
@@ -190,7 +189,7 @@ function AddCoupon(): JSX.Element {
             <br/> 
             <br/> 
 
-            <Button  variant="contained" onClick={handleClick} sx={{  ml:"1vw" , mt:"5vh"}} style={{borderRadius:"15px"}} >
+            <Button  variant="contained" onClick={handleClick} sx={{  ml:"1vw" , mt:"5vh"}} style={{borderRadius:"15px"}} disabled={(title&&categoryId&&image&&description&&price&&endDate&&startDate)?false:true} >
                 submit
             </Button>
         </Box>

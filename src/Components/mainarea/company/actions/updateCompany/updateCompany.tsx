@@ -31,7 +31,7 @@ function UpdateCoupon(): JSX.Element {
     const [sucMessage, setSucMessage] = useState("");
     const [isLoad,setLoad] = useState<boolean>(false);
     const [isError,setError] = useState(false);
-    const [myError,setMyError] = useState("")
+    const [myError,setMyError] = useState("");
 
     const url = "http://localhost:8080/company/updateCoupon"
 
@@ -67,8 +67,7 @@ function UpdateCoupon(): JSX.Element {
                     const err = error.response?.request.responseText
                     const errMessage = JSON.stringify(err);
                     console.log(errMessage)
-                    setMyError(errMessage.slice(22,66)
-                    )
+                    setMyError(errMessage)
                     
                     setError(true);   
             

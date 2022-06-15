@@ -57,12 +57,11 @@ function AddCompany(): JSX.Element {
                 setIsSuccesses(true)
                 setSucMessage("Company Added!")
         }).catch((error:AxiosError) => {
-            const err = error.response?.request.responseText
+            const err = error.response?.data
             const errMessage = JSON.stringify(err);
             console.log(errMessage)
         
-            setMyError(errMessage.slice(22,66)
-            )
+            setMyError(errMessage)
             
             setError(true);        })
     }
@@ -117,7 +116,7 @@ function AddCompany(): JSX.Element {
                 onChange={ (e) => { setName(e.target.value) } }
             />
             <br/>
-            <Button sx={{ml:"1vw" , mt:"5vh"}} style={{borderRadius:"15px"}} variant="contained" onClick={handleClick} >
+            <Button sx={{ml:"1vw" , mt:"5vh"}} style={{borderRadius:"15px"}} variant="contained" onClick={handleClick} disabled={(email&&name&&password)?false:true} >
                 submit
             </Button>
         </Box>
